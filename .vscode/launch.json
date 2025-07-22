@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "MainLauncher",
+      "request": "launch",
+      "mainClass": "gui.MainLauncher",
+      "projectName": "Java_QuanLyNhanSu"
+    },
+    {
+      "type": "java",
+      "name": "Run Main",
+      "request": "launch",
+      "mainClass": "ten_goi_day_du_cua_class_chay_chinh",
+      "projectName": "Java_QuanLyNhanSu"
+    }
+  ]
+}
