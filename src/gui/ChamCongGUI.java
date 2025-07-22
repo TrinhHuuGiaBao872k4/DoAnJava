@@ -220,7 +220,8 @@ public class ChamCongGUI extends JPanel {
 			}
 		};
 
-
+//		tblNV = new JTable();
+//		tblNV.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 
 		// không cho phép di chuyển vị trí columns
 		tblChamCong.getTableHeader().setReorderingAllowed(false);
