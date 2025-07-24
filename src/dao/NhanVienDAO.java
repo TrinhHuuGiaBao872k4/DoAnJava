@@ -8,7 +8,7 @@ import dto.NhanVienDTO;
 import util.MySqlDataAccessHelper;
 
 public class NhanVienDAO {
-	// Lấy danh sách tất cả nhân viên
+
 	public ArrayList<NhanVienDTO> NhanVienAll(String tk) {
 		MySqlDataAccessHelper conn = new MySqlDataAccessHelper();
 
@@ -20,10 +20,10 @@ public class NhanVienDAO {
 		try {
 			ResultSet rs = conn.executeQuery(query);
 			while (rs.next()) {
-				// khởi tạo
+
 				NhanVienDTO aNhanVien = new NhanVienDTO();
 
-				// gán giá trị
+
 				aNhanVien.setMaNV(rs.getInt("manv"));
 				aNhanVien.setHoNV(rs.getString("honv"));
 				aNhanVien.setTenNV(rs.getString("tennv"));
@@ -34,7 +34,8 @@ public class NhanVienDAO {
 				aNhanVien.setDiaChi(rs.getString("diachi"));
 				aNhanVien.setMaLuong(rs.getInt("maluong"));
 
-				// thêm vào array list
+
+
 				arr.add(aNhanVien);
 			}
 		} catch (SQLException ex) {
@@ -67,10 +68,10 @@ public class NhanVienDAO {
 		try {
 			ResultSet rs = conn.executeQueryPre();
 			while (rs.next()) {
-				// khởi tạo
+
 				NhanVienDTO aNhanVien = new NhanVienDTO();
 
-				// gán giá trị
+
 				aNhanVien.setMaNV(rs.getInt("manv"));
 				aNhanVien.setHoNV(rs.getString("honv"));
 				aNhanVien.setTenNV(rs.getString("tennv"));
@@ -81,7 +82,7 @@ public class NhanVienDAO {
 				aNhanVien.setDiaChi(rs.getString("diachi"));
 				aNhanVien.setMaLuong(rs.getInt("maluong"));
 
-				// thêm vào array list
+
 				arr.add(aNhanVien);
 			}
 		} catch (SQLException ex) {
@@ -106,10 +107,10 @@ public class NhanVienDAO {
 		try {
 			ResultSet rs = conn.executeQueryPre();
 			while (rs.next()) {
-				// khởi tạo
+
 				NhanVienDTO aNhanVien = new NhanVienDTO();
 
-				// gán giá trị
+
 				aNhanVien.setMaNV(rs.getInt("manv"));
 				aNhanVien.setHoNV(rs.getString("honv"));
 				aNhanVien.setTenNV(rs.getString("tennv"));
@@ -120,7 +121,7 @@ public class NhanVienDAO {
 				aNhanVien.setDiaChi(rs.getString("diachi"));
 				aNhanVien.setMaLuong(rs.getInt("maluong"));
 
-				// thêm vào array list
+
 				arr.add(aNhanVien);
 			}
 		} catch (SQLException ex) {
@@ -143,10 +144,10 @@ public class NhanVienDAO {
 		try {
 			ResultSet rs = conn.executeQueryPre();
 			while (rs.next()) {
-				// khởi tạo
+
 				NhanVienDTO aNhanVien = new NhanVienDTO();
 
-				// gán giá trị
+
 				aNhanVien.setMaNV(rs.getInt("manv"));
 				aNhanVien.setHoNV(rs.getString("honv"));
 				aNhanVien.setTenNV(rs.getString("tennv"));
@@ -157,7 +158,7 @@ public class NhanVienDAO {
 				aNhanVien.setDiaChi(rs.getString("diachi"));
 				aNhanVien.setMaLuong(rs.getInt("maluong"));
 
-				// thêm vào array list
+
 				arr.add(aNhanVien);
 			}
 		} catch (SQLException ex) {
@@ -182,10 +183,10 @@ public class NhanVienDAO {
 		try {
 			ResultSet rs = conn.executeQuery(query);
 			while (rs.next()) {
-				// khởi tạo
+
 				NhanVienDTO aNhanVien = new NhanVienDTO();
 
-				// gán giá trị
+
 				aNhanVien.setMaNV(rs.getInt("manv"));
 				aNhanVien.setHoNV(rs.getString("honv"));
 				aNhanVien.setTenNV(rs.getString("tennv"));
@@ -196,7 +197,7 @@ public class NhanVienDAO {
 				aNhanVien.setDiaChi(rs.getString("diachi"));
 				aNhanVien.setMaLuong(rs.getInt("maluong"));
 
-				// thêm vào array list
+
 				arr.add(aNhanVien);
 			}
 		} catch (SQLException ex) {
@@ -208,17 +209,17 @@ public class NhanVienDAO {
 		return arr.get(0);
 	}
 
-	// Thêm nhân viên
+
 	public void NhanVienAdd(NhanVienDTO aNV) {
 		MySqlDataAccessHelper conn = new MySqlDataAccessHelper();
 
 		String sql = "INSERT INTO nhanvien (honv, tennv, socmnd, ngaysinh, gioitinh, sdt, diachi, maluong) "
 				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 
-		// prepare statement
+
 		conn.prepare(sql);
 
-		// bind values
+
 		conn.bind(1, aNV.getHoNV());
 		conn.bind(2, aNV.getTenNV());
 		conn.bind(3, aNV.getSoCMND());
@@ -226,22 +227,24 @@ public class NhanVienDAO {
 		conn.bind(5, aNV.getGioiTinh());
 		conn.bind(6, aNV.getSDT());
 		conn.bind(7, aNV.getDiaChi());
-		conn.bind(8, 1); // ma luong 1
+		conn.bind(8, 1); 
 
 		conn.executeUpdatePre();
 
 		conn.Close();
 	}
 
-	// Sửa nhân viên
+
+
+
 	public void NhanVienEdit(NhanVienDTO aNV) {
 		MySqlDataAccessHelper conn = new MySqlDataAccessHelper();
 
 		String sql = "UPDATE nhanvien SET honv = ?, tennv = ?, socmnd =?, ngaysinh = ?, gioitinh = ?, sdt = ?, diachi =?, maluong = ? WHERE manv = ?";
-		// prepare statement
+
 		conn.prepare(sql);
 
-		// bind values
+
 		conn.bind(1, aNV.getHoNV());
 		conn.bind(2, aNV.getTenNV());
 		conn.bind(3, aNV.getSoCMND());
@@ -258,16 +261,14 @@ public class NhanVienDAO {
 		conn.Close();
 	}
 
-	// xóa nhân viên
+
 	public void NhanVienDelete(int maNv) {
 		MySqlDataAccessHelper conn = new MySqlDataAccessHelper();
 
 		String sql = "UPDATE nhanvien SET isdeleted = true WHERE manv = ?";
 
-		// prepare statement
-		conn.prepare(sql);
 
-		// bind values
+		conn.prepare(sql);
 		conn.bind(1, maNv);
 
 		conn.executeUpdatePre();
@@ -275,7 +276,7 @@ public class NhanVienDAO {
 		conn.Close();
 	}
 
-	// lấy nhân viên theo id
+
 	public NhanVienDTO NhanVienGet(int maNv) {
 		MySqlDataAccessHelper conn = new MySqlDataAccessHelper();
 		ArrayList<NhanVienDTO> arr = new ArrayList<NhanVienDTO>();
@@ -287,10 +288,10 @@ public class NhanVienDAO {
 		try {
 			ResultSet rs = conn.executeQueryPre();
 			while (rs.next()) {
-				// khởi tạo
+
 				NhanVienDTO aNhanVien = new NhanVienDTO();
 
-				// gán giá trị
+
 				aNhanVien.setMaNV(rs.getInt("manv"));
 				aNhanVien.setHoNV(rs.getString("honv"));
 				aNhanVien.setTenNV(rs.getString("tennv"));
@@ -301,7 +302,7 @@ public class NhanVienDAO {
 				aNhanVien.setDiaChi(rs.getString("diachi"));
 				aNhanVien.setMaLuong(rs.getInt("maluong"));
 
-				// thêm vào array list
+
 				arr.add(aNhanVien);
 			}
 		} catch (SQLException ex) {

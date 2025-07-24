@@ -19,7 +19,7 @@ public class HeaderPanel extends JPanel {
 	String TITLE = MyProps.CURRENT_USER.isEmpty() ? "HR Manager" : "HR Manager: " + MyProps.CURRENT_USER;
 	MyProps myProps = new MyProps();
 
-	// default size
+
 	public static final int WIDTH = MyProps.DEFAULT_WIDTH;
 	public static final int HEIGHT = 50;
 
@@ -30,7 +30,7 @@ public class HeaderPanel extends JPanel {
 
 		this.setSize(WIDTH, HEIGHT);
 
-		// init components
+
 		initBtnExit();
 		initBtnMinimize();
 		initLblTitle();
@@ -39,28 +39,27 @@ public class HeaderPanel extends JPanel {
 	private void initBtnExit() {
 		btnExit = new JButton("X");
 
-		// set properties
+
 		btnExit.setBounds(WIDTH - HEIGHT, 0, HEIGHT, HEIGHT);
 		btnExit.setBackground(Color.decode(myProps.Color_Teal_Dark));
 		btnExit.setForeground(Color.WHITE);
 		btnExit.setFont(myProps.DEFAULT_FONT);
 
-		// flat style
+
 		btnExit.setBorderPainted(false);
 		btnExit.setFocusPainted(false);
 
-		// hover effect
 		myProps.BtnHover(btnExit, Color.decode("#d50000"));
 
-		// confirm exit
+
 		btnExit.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				// confirm dialog exit or not
-				int dialogResult = JOptionPane.showConfirmDialog(null, // component
-						"Do you want to exit?", // message
-						"Confirm Exit", // title
-						JOptionPane.YES_NO_OPTION, // option type
-						JOptionPane.WARNING_MESSAGE // message types
+
+				int dialogResult = JOptionPane.showConfirmDialog(null, 
+						"Do you want to exit?", 
+						"Confirm Exit", 
+						JOptionPane.YES_NO_OPTION, 
+						JOptionPane.WARNING_MESSAGE 
 				);
 
 				if (dialogResult == JOptionPane.YES_OPTION) {
@@ -75,17 +74,16 @@ public class HeaderPanel extends JPanel {
 	private void initBtnMinimize() {
 		btnMinimize = new JButton("-");
 
-		// set properties
+
 		btnMinimize.setBounds(WIDTH - 2 * HEIGHT, 0, HEIGHT, HEIGHT);
 		btnMinimize.setBackground(Color.decode(myProps.Color_Teal_Dark));
 		btnMinimize.setForeground(Color.WHITE);
 		btnMinimize.setFont(myProps.DEFAULT_FONT);
 
-		// flat style
 		btnMinimize.setBorderPainted(false);
 		btnMinimize.setFocusPainted(false);
 
-		// hover effect
+
 		myProps.BtnHover(btnMinimize, Color.decode(myProps.Color_Teal));
 
 		this.add(btnMinimize);

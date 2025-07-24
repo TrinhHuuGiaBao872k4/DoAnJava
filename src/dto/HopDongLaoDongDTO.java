@@ -26,7 +26,7 @@ public class HopDongLaoDongDTO {
 		this.MaPhong = hd.MaPhong;
 	}
 
-	// get
+
 	public int getMaHD() {
 		return MaHD;
 	}
@@ -63,7 +63,7 @@ public class HopDongLaoDongDTO {
 		return MaPhong;
 	}
 
-	// set
+
 	public void setMaHD(int mahd) {
 		MaHD = mahd;
 	}

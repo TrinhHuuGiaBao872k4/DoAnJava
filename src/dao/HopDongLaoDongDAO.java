@@ -22,10 +22,10 @@ public class HopDongLaoDongDAO {
 		try {
 			ResultSet rs = conn.executeQuery(query);
 			while (rs.next()) {
-				// khởi tạo
+
 				HopDongLaoDongDTO hd = new HopDongLaoDongDTO();
 
-				// gán giá trị
+
 				hd.setMaHD(rs.getInt("mahd"));
 				hd.setMaNV(rs.getInt("manv"));
 				hd.setTuNgay(rs.getString("tungay"));
@@ -36,7 +36,7 @@ public class HopDongLaoDongDAO {
 				hd.setMaCV(rs.getInt("macv"));
 				hd.setMaPhong(rs.getInt("maphong"));
 
-				// thêm vào array list
+
 				arr.add(hd);
 			}
 		} catch (SQLException ex) {
@@ -48,17 +48,17 @@ public class HopDongLaoDongDAO {
 		return arr;
 	}
 
-	/// Thêm hợp dồng lao động
+
 	public void HopDongLaoDongAdd(HopDongLaoDongDTO aHDLD) {
 		MySqlDataAccessHelper conn = new MySqlDataAccessHelper();
 
 		String sql = "INSERT INTO hopdonglaodong (manv, tungay, denngay, diadiemlamviec, thoigianlamviec, hesoluong, macv, maphong) "
 				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 
-		// prepare statement
+
 		conn.prepare(sql);
 
-		// bind values
+
 		conn.bind(1, aHDLD.getMaNV());
 		conn.bind(2, aHDLD.getTuNGay());
 		conn.bind(3, aHDLD.getDenNgay());
@@ -73,16 +73,13 @@ public class HopDongLaoDongDAO {
 		conn.Close();
 	}
 
-	// sửa hợp đồng lao dộng
+
 	public void HopDongLaoDongEdit(HopDongLaoDongDTO aHDLD) {
 		MySqlDataAccessHelper conn = new MySqlDataAccessHelper();
 
 		String sql = "UPDATE hopdonglaodong SET manv = ?, tungay = ?, denngay = ?, diadiemlamviec = ?, thoigianlamviec = ?, hesoluong = ?, macv = ?, maphong = ? ";
 
-		// prepare statement
 		conn.prepare(sql);
-
-		// bind values
 		conn.bind(1, aHDLD.getMaNV());
 		conn.bind(2, aHDLD.getTuNGay());
 		conn.bind(3, aHDLD.getDenNgay());
@@ -99,16 +96,15 @@ public class HopDongLaoDongDAO {
 		conn.Close();
 	}
 
-	// xóa hợp đồng lao động
+
+
 	public void HopDongLaoDongDelete(int maHDLD) {
 		MySqlDataAccessHelper conn = new MySqlDataAccessHelper();
 
 		String sql = "DELETE FROM hopdonglaodong WHERE maHDLD = ?";
 
-		// prepare statement
-		conn.prepare(sql);
 
-		// bind values
+		conn.prepare(sql);
 		conn.bind(1, maHDLD);
 
 		conn.executeUpdatePre();
@@ -119,10 +115,9 @@ public class HopDongLaoDongDAO {
 	public void ThemNhanVienPhongBan(HopDongLaoDongDTO hd, int maPb) {
 		MySqlDataAccessHelper conn = new MySqlDataAccessHelper();
 
-		// thêm hợp đồng mới
+
 		HopDongLaoDongDTO hdMoi = new HopDongLaoDongDTO(hd);
 
-		// gán kết thúc hợp đồng cũ
 		KetThucHopDong(hd);
 
 		hdMoi.setMaPhong(maPb);
@@ -136,23 +131,21 @@ public class HopDongLaoDongDAO {
 		String sql = "";
 
 		if (hd.getMaCV() != 2) {
-			// gán kết thúc hợp đồng cũ
+
 			KetThucHopDong(hd);
 
-			// lấy hd của tp hiện tại
 			HopDongLaoDongDTO hdTpHienTai = TruongPhongHienTai(maPb);
 
 			if (hdTpHienTai != null) {
-				// gán kết thúc hợp đồng cũ của tp hiện tại
 				KetThucHopDong(hdTpHienTai);
 
-				// thêm hd mới gán tp cũ thành nv
+
 				HopDongLaoDongDTO hdTpCu = new HopDongLaoDongDTO(hdTpHienTai);
 				hdTpCu.setMaCV(1);
 				this.HopDongLaoDongAdd(hdTpCu);
 			}
 
-			// thêm hợp đồng mới
+
 			HopDongLaoDongDTO hdMoi = new HopDongLaoDongDTO(hd);
 			hdMoi.setMaCV(2);
 			this.HopDongLaoDongAdd(hdMoi);
@@ -171,7 +164,6 @@ public class HopDongLaoDongDAO {
 		MySqlDataAccessHelper conn = new MySqlDataAccessHelper();
 		ArrayList<HopDongLaoDongDTO> arr = new ArrayList<HopDongLaoDongDTO>();
 
-		// chọn hd mới nhất
 		String sql = "SELECT * FROM hopdonglaodong WHERE manv = ? AND denngay = ?";
 
 		conn.prepare(sql);
@@ -182,10 +174,10 @@ public class HopDongLaoDongDAO {
 		try {
 			ResultSet rs = conn.executeQueryPre();
 			while (rs.next()) {
-				// khởi tạo
+
 				HopDongLaoDongDTO hd = new HopDongLaoDongDTO();
 
-				// gán giá trị
+
 				hd.setMaHD(rs.getInt("mahd"));
 				hd.setMaNV(rs.getInt("manv"));
 				hd.setTuNgay(rs.getString("tungay"));
@@ -196,7 +188,6 @@ public class HopDongLaoDongDAO {
 				hd.setMaCV(rs.getInt("macv"));
 				hd.setMaPhong(rs.getInt("maphong"));
 
-				// thêm vào array list
 				arr.add(hd);
 			}
 		} catch (SQLException ex) {
@@ -223,10 +214,8 @@ public class HopDongLaoDongDAO {
 		try {
 			ResultSet rs = conn.executeQueryPre();
 			while (rs.next()) {
-				// khởi tạo
-				HopDongLaoDongDTO hd = new HopDongLaoDongDTO();
 
-				// gán giá trị
+				HopDongLaoDongDTO hd = new HopDongLaoDongDTO();
 				hd.setMaHD(rs.getInt("mahd"));
 				hd.setMaNV(rs.getInt("manv"));
 				hd.setTuNgay(rs.getString("tungay"));
@@ -237,7 +226,7 @@ public class HopDongLaoDongDAO {
 				hd.setMaCV(rs.getInt("macv"));
 				hd.setMaPhong(rs.getInt("maphong"));
 
-				// thêm vào array list
+
 				arr.add(hd);
 			}
 		} catch (SQLException ex) {
@@ -266,7 +255,7 @@ public class HopDongLaoDongDAO {
 		try {
 			ResultSet rs = conn.executeQueryPre();
 			while (rs.next()) {
-				// khởi tạo
+
 				cv = rs.getString("tencv");
 			}
 		} catch (SQLException ex) {
@@ -324,10 +313,10 @@ public class HopDongLaoDongDAO {
 		try {
 			ResultSet rs = conn.executeQueryPre();
 			while (rs.next()) {
-				// khởi tạo
+
 				HopDongLaoDongDTO hd = new HopDongLaoDongDTO();
 
-				// gán giá trị
+
 				hd.setMaHD(rs.getInt("mahd"));
 				hd.setMaNV(rs.getInt("manv"));
 				hd.setTuNgay(rs.getString("tungay"));
@@ -338,7 +327,6 @@ public class HopDongLaoDongDAO {
 				hd.setMaCV(rs.getInt("macv"));
 				hd.setMaPhong(rs.getInt("maphong"));
 
-				// thêm vào array list
 				arr.add(hd);
 			}
 		} catch (SQLException ex) {

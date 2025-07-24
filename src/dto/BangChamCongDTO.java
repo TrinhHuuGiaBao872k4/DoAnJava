@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package dto;
 
 /**
@@ -23,7 +19,7 @@ public class BangChamCongDTO {
 		this.TrangThai = bcc.TrangThai;
 	}
 
-	// get
+
 	public int getMaChamCong() {
 		return MaChamCong;
 	}
@@ -36,7 +32,7 @@ public class BangChamCongDTO {
 		return TrangThai;
 	}
 
-	// set
+
 	public void setMaChamCong(int machamcong) {
 		MaChamCong = machamcong;
 	}

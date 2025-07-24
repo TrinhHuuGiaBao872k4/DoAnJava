@@ -67,16 +67,16 @@ public class PhongBanGUI extends JPanel {
 		initComponents();
 	}
 
-	// khởi tạo các component
+
 	private void initComponents() {
 		this.setLayout(new GridLayout(1, 2));
-//		this.setBackground(Color.PINK);
+
 
 		initPanelPhongBan();
 		initFormPhongBan();
 		initTablePhongBan();
 
-		// button phong ban
+
 		initButtonPhongBan();
 		btnPbThemClicked();
 		btnPbXoaClicked();
@@ -86,7 +86,7 @@ public class PhongBanGUI extends JPanel {
 		initTableNhanVien();
 		initButtonNhanVien();
 
-		// button nhan vien
+
 		btnNvTpClicked();
 		btnNvXoaClicked();
 		btnNvThemClicked();
@@ -109,18 +109,18 @@ public class PhongBanGUI extends JPanel {
 
 	private void initFormPhongBan() {
 		GridBagConstraints cons = new GridBagConstraints();
-		// mã nhân viên
+
 		lblPbMaPhong = new JLabel(MA_PHONG);
 		lblPbMaPhong.setFont(myProps.DEFAULT_FONT_SMALL);
 		cons = myProps.MyGridBagConstraints(1, 1, 1, 1, true, true);
 		pnlPB.add(lblPbMaPhong, cons);
 
 		txtPbMaPhong = myProps.RoundedTextField(5);
-		txtPbMaPhong.setEditable(false); // không cho sửa
+		txtPbMaPhong.setEditable(false); 
 		cons = myProps.MyGridBagConstraints(2, 1, 1, 1, true, true);
 		pnlPB.add(txtPbMaPhong, cons);
 
-		// họ nhân viên
+
 		lblPbTenPhong = new JLabel(TEN_PHONG);
 		lblPbTenPhong.setFont(myProps.DEFAULT_FONT_SMALL);
 		cons = myProps.MyGridBagConstraints(3, 1, 1, 1, true, true);
@@ -134,31 +134,30 @@ public class PhongBanGUI extends JPanel {
 	private void initTablePhongBan() {
 		tblPB = new JTable() {
 			public boolean isCellEditable(int rowIndex, int colIndex) {
-				return false; // Disallow the editing of any cell
+				return false; 
 			}
 		};
 
-		// không cho phép di chuyển vị trí columns
+
 		tblPB.getTableHeader().setReorderingAllowed(false);
 
-		// không cho phép resize column
 		tblPB.getTableHeader().setResizingAllowed(false);
 
-		// sắp xếp khi click header
+
 		tblPB.setAutoCreateRowSorter(true);
 
 		setModelTablePB();
 
 		GridBagConstraints cons = myProps.MyGridBagConstraints(1, 2, 4, 5, true, true);
 
-		// scroll bar
+
 		JScrollPane scroll = new JScrollPane(tblPB);
 
 		pnlPB.add(scroll, cons);
 	}
 
 	private void setModelTablePB() {
-		// table header
+
 		Vector<String> header = new Vector<String>();
 		header.add(MA_PHONG);
 		header.add(TEN_PHONG);
@@ -246,33 +245,33 @@ public class PhongBanGUI extends JPanel {
 	private void initTableNhanVien() {
 		tblNV = new JTable() {
 			public boolean isCellEditable(int rowIndex, int colIndex) {
-				return false; // Disallow the editing of any cell
+				return false; 
 			}
 		};
 
-		// đọc dữ liệu
+
 		ArrayList<NhanVienDTO> lstNV = new ArrayList<NhanVienDTO>();
 		setModelTableNV(lstNV);
 
-		// không cho phép di chuyển vị trí columns
+
 		tblNV.getTableHeader().setReorderingAllowed(false);
 
-		// không cho phép resize column
+
 		tblNV.getTableHeader().setResizingAllowed(false);
 
-		// sắp xếp khi click header
+
 		tblNV.setAutoCreateRowSorter(true);
 
 		GridBagConstraints cons = myProps.MyGridBagConstraints(1, 1, 4, 5, true, true);
 
-		// scroll bar
+
 		JScrollPane scroll = new JScrollPane(tblNV);
 
 		pnlNV.add(scroll, cons);
 	}
 
 	private void setModelTableNV(ArrayList<NhanVienDTO> lstNV) {
-		// table header
+
 		Vector<String> header = new Vector<String>();
 		header.add(MA_NV);
 		header.add(TEN_NV);
@@ -439,7 +438,7 @@ public class PhongBanGUI extends JPanel {
 		});
 	}
 
-	// xóa nv khỏi phòng ban
+
 	private void btnNvXoaClicked() {
 		btnNvXoa.addActionListener(new ActionListener() {
 			@Override
@@ -468,7 +467,7 @@ public class PhongBanGUI extends JPanel {
 		});
 	}
 
-	// thêm nv vào phòng ban
+
 	private void btnNvThemClicked() {
 		btnNvThem.addActionListener(new ActionListener() {
 			@Override
@@ -511,7 +510,7 @@ public class PhongBanGUI extends JPanel {
 
 		JTable tblNvTemp = new JTable() {
 			public boolean isCellEditable(int rowIndex, int colIndex) {
-				return false; // Disallow the editing of any cell
+				return false; 
 			}
 
 			@Override
@@ -520,19 +519,18 @@ public class PhongBanGUI extends JPanel {
 			}
 		};
 
-		// không cho phép di chuyển vị trí columns
 		tblNvTemp.getTableHeader().setReorderingAllowed(false);
 
-		// không cho phép resize column
+
 		tblNvTemp.getTableHeader().setResizingAllowed(false);
 
-		// sắp xếp khi click header
+
 		tblNvTemp.setAutoCreateRowSorter(true);
 
-		// đọc dữ liệu
+
 		ArrayList<NhanVienDTO> lstNV = nvBUS.NhanVienTheoPhongBan(null);
 
-		// table header
+
 		Vector<String> header = new Vector<String>();
 		header.add(MA_NV);
 		header.add(TEN_NV);
@@ -559,7 +557,7 @@ public class PhongBanGUI extends JPanel {
 
 		tblNvTemp.setModel(dtm);
 
-		// scroll bar
+
 		JScrollPane scroll = new JScrollPane(tblNvTemp);
 
 		GridBagConstraints cons = myProps.MyGridBagConstraints(1, 1, 1, 1, true, true);

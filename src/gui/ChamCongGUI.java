@@ -122,7 +122,7 @@ public class ChamCongGUI extends JPanel {
 		lblNam = new JLabel(NAM);
 		lblNam.setFont(myProps.DEFAULT_FONT_SMALL_BOLD);
 
-		// combo box tháng
+
 		ArrayList<Integer> lstThang = new ArrayList<Integer>();
 		for (int i = 1; i <= 12; i++) {
 			lstThang.add(i);
@@ -133,7 +133,7 @@ public class ChamCongGUI extends JPanel {
 		boxThang = new JComboBox<Integer>(arrayThang);
 		boxThang.setFont(myProps.DEFAULT_FONT_SMALL);
 
-		// combo box năm
+
 		ArrayList<Integer> lstNam = new ArrayList<Integer>();
 		for (int i = 2017; i <= 2019; i++) {
 			lstNam.add(i);
@@ -147,19 +147,18 @@ public class ChamCongGUI extends JPanel {
 		boxThang.setSelectedItem(12);
 		boxNam.setSelectedItem(2019);
 
-		// button chọn
+
 		btnChon = new JButton("Chọn");
 		myProps.BtnFlat(btnChon);
 		btnChon.setBackground(Color.decode("#4caf50"));
 		btnChon.setForeground(Color.WHITE);
 
-		// button chọn nv
+
 		btnChonNV = new JButton("...");
 		myProps.BtnFlat(btnChonNV);
 		btnChonNV.setBackground(Color.decode("#e0e0e0"));
 		btnChonNV.setForeground(Color.BLACK);
-		
-		// button excel
+
 		btnExcel = new JButton("Xuất Excel");
 		myProps.BtnFlat(btnExcel);
 		btnExcel.setBackground(Color.decode("#e0e0e0"));
@@ -180,7 +179,7 @@ public class ChamCongGUI extends JPanel {
 	}
 
 	private void initRadioButton() {
-		// Create the radio buttons.
+
 		lamRad = new JRadioButton("Làm (x)");
 		lamRad.setMnemonic(KeyEvent.VK_B);
 		lamRad.setActionCommand("x");
@@ -198,7 +197,7 @@ public class ChamCongGUI extends JPanel {
 		offRad.setMnemonic(KeyEvent.VK_R);
 		offRad.setActionCommand("null");
 
-		// Group the radio buttons.
+
 		group = new ButtonGroup();
 		group.add(lamRad);
 		group.add(nghiRad);
@@ -216,25 +215,17 @@ public class ChamCongGUI extends JPanel {
 	private void initTableChamCong() {
 		tblChamCong = new JTable() {
 			public boolean isCellEditable(int rowIndex, int colIndex) {
-				return false; // Disallow the editing of any cell
+				return false; 
 			}
 		};
 
-//		tblNV = new JTable();
-//		tblNV.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 
-		// không cho phép di chuyển vị trí columns
 		tblChamCong.getTableHeader().setReorderingAllowed(false);
 
-		// không cho phép resize column
-//		tblChamCong.getTableHeader().setResizingAllowed(false);
-
-		// sắp xếp khi click header
-//		tblChamCong.setAutoCreateRowSorter(true);
 
 		tblChamCong.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-		// scroll bar
+
 		JScrollPane scroll = new JScrollPane(tblChamCong, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
@@ -253,7 +244,6 @@ public class ChamCongGUI extends JPanel {
 		});
 	}
 
-	// button dấu 3 chấm
 	private void FramePhongBan() {
 		JFrame pbFrame = new JFrame("Chọn phòng ban");
 
@@ -280,7 +270,7 @@ public class ChamCongGUI extends JPanel {
 
 		JTable tblNvTemp = new JTable() {
 			public boolean isCellEditable(int rowIndex, int colIndex) {
-				return false; // Disallow the editing of any cell
+				return false; 
 			}
 
 			@Override
@@ -289,19 +279,18 @@ public class ChamCongGUI extends JPanel {
 			}
 		};
 
-		// không cho phép di chuyển vị trí columns
+
 		tblNvTemp.getTableHeader().setReorderingAllowed(false);
 
-		// không cho phép resize column
+
 		tblNvTemp.getTableHeader().setResizingAllowed(false);
 
-		// sắp xếp khi click header
+
 		tblNvTemp.setAutoCreateRowSorter(true);
 
-		// đọc dữ liệu
+
 		ArrayList<PhongBanDTO> lstPB = pbBUS.PhongBanAll();
 
-		// table header
 		Vector<String> header = new Vector<String>();
 		header.add("Mã phòng");
 		header.add("Tên phòng");
@@ -328,7 +317,7 @@ public class ChamCongGUI extends JPanel {
 
 		tblNvTemp.setModel(dtm);
 
-		// scroll bar
+
 		JScrollPane scroll = new JScrollPane(tblNvTemp);
 
 		GridBagConstraints cons = myProps.MyGridBagConstraints(1, 1, 1, 1, true, true);
@@ -392,14 +381,14 @@ public class ChamCongGUI extends JPanel {
 		currentThang = thang;
 		currentNam = nam;
 
-		// table header
+
 		Vector<String> header = new Vector<String>();
 		header.add("Mã NV");
 		header.add("Nhân viên");
 		for (int i = 1; i <= days; i++) {
 			LocalDate localDate = LocalDate.of(currentNam, Month.of(currentThang), i);
 
-			// Find the day from the local date
+
 			String dayOfWeek = DayOfWeek.from(localDate).toString();
 			dayOfWeek = dayOfWeek.toLowerCase().substring(0, 3);
 			dayOfWeek = dayOfWeek.substring(0, 1).toUpperCase() + dayOfWeek.substring(1);
@@ -431,7 +420,6 @@ public class ChamCongGUI extends JPanel {
 			int machamcong = ccBUS.ChamCongGet(nv.getMaNV(), currentNam + "-" + currentThang + "-1").getMaChamCong();
 			BangChamCongDTO bangChamCongDTO = new BangChamCongDTO();
 
-			// trạng thái
 			for (int j = 1; j <= days; j++) {
 				bangChamCongDTO = bccBUS.BangChamCongGet(machamcong, j);
 				lstRow.add(bangChamCongDTO.getTrangThai());
@@ -443,9 +431,7 @@ public class ChamCongGUI extends JPanel {
 		}
 
 		tblChamCong.setModel(dtm);
-		
-//		myProps.ExportExcelTable(dtm);
-//		myProps.exportDataToExcel(dtm);
+
 	}
 
 	private void btnChonClicked() {
@@ -479,8 +465,8 @@ public class ChamCongGUI extends JPanel {
 		MouseListener tableMouseListener = new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				currentRow = tblChamCong.rowAtPoint(e.getPoint());// get mouse-selected row
-				currentCol = tblChamCong.columnAtPoint(e.getPoint());// get mouse-selected col
+				currentRow = tblChamCong.rowAtPoint(e.getPoint());
+				currentCol = tblChamCong.columnAtPoint(e.getPoint());
 				group.clearSelection();
 			}
 		};
@@ -495,27 +481,25 @@ public class ChamCongGUI extends JPanel {
 				if (currentCol == 0 || currentCol == 1) {
 					JOptionPane.showMessageDialog(null, "Vui lòng chọn ngày");
 				} else {
-					// set giá trị trên table
-					// lấy giá trị combo box
+
 					String option = e.getActionCommand();
 					tblChamCong.setValueAt(option, currentRow, currentCol);
 					int maNv = (int) tblChamCong.getValueAt(currentRow, 0);
 
 					String thangString = currentNam + "-" + currentThang + "-1";
 
-					// lưu database
-					// chấm công
+
 					ChamCongDTO chamcong = new ChamCongDTO();
 					chamcong.setMaNV(maNv);
 					chamcong.setThang(thangString);
 
-//					System.out.println(maNv + " " + thangString);
+
 
 					ccBUS.ChamCongAdd(chamcong);
 
 					int machamcong = ccBUS.ChamCongGet(maNv, thangString).getMaChamCong();
 
-					// bảng chấm công
+
 					BangChamCongDTO bccDto = new BangChamCongDTO();
 					bccDto.setMaChamCong(machamcong);
 					bccDto.setNgayTrongThang(currentCol - 1);
@@ -526,7 +510,6 @@ public class ChamCongGUI extends JPanel {
 			}
 		};
 
-		// Register a listener for the radio buttons.
 		lamRad.addActionListener(radClick);
 		nghiRad.addActionListener(radClick);
 		offRad.addActionListener(radClick);

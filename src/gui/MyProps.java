@@ -60,8 +60,8 @@ public class MyProps {
 	}
 
 	public void BtnFlat(JButton btn) {
-		// flat style
-//		btn.setBorderPainted(false);
+
+
 		btn.setFocusPainted(false);
 	}
 
@@ -96,7 +96,7 @@ public class MyProps {
 	public void resizeColumnWidth(JTable table) {
 		final TableColumnModel columnModel = table.getColumnModel();
 		for (int column = 0; column < table.getColumnCount(); column++) {
-			int width = 15; // Min width
+			int width = 15; 
 			for (int row = 0; row < table.getRowCount(); row++) {
 				TableCellRenderer renderer = table.getCellRenderer(row, column);
 				Component comp = table.prepareRenderer(renderer, row, column);
@@ -157,31 +157,24 @@ public class MyProps {
 			JOptionPane.showMessageDialog(null, "Không có dữ liệu");
 			return;
 		}
-//		String excelImagePath = "";
 
-		// First Download Apache POI Library For Dealing with excel files.
-		// Then add the library to the current project
 		FileOutputStream excelFos = null;
 		XSSFWorkbook excelJTableExport = null;
-//		BufferedOutputStream excelBos = null;
+
 		try {
-			// Choosing Saving Location
-			// Set default location to C:\Users\Admin\Desktop or your preferred location
+
 			JFileChooser excelFileChooser = new JFileChooser(System.getProperty("user.home") + "\\Desktop");
 			
-			// Dialog box title
 			excelFileChooser.setDialogTitle("Save As ..");
-			
-			// Filter only xls, xlsx, xlsm files
+
 			FileNameExtensionFilter fnef = new FileNameExtensionFilter(".xls, .xlsx, .xlsm", "xls", "xlsx", "xlsm");
 			
-			// Setting extension for selected file names
+
 			excelFileChooser.setFileFilter(fnef);
 			int chooser = excelFileChooser.showSaveDialog(null);
 			
-			// Check if save button has been clicked
+
 			if (chooser == JFileChooser.APPROVE_OPTION) {
-				// If button is clicked execute this code
 				excelJTableExport = new XSSFWorkbook();
 				XSSFSheet excelSheet = excelJTableExport.createSheet("Jtable Export");
 				XSSFRow excelRow;
@@ -194,28 +187,7 @@ public class MyProps {
 				XSSFCellStyle style = excelJTableExport.createCellStyle();
 				style.setFont(font);
 				
-//				for (int i = 0; i < model.getRowCount(); i++) {
-//					excelRow = excelSheet.createRow(i);
-//					for (int j = 0; j < model.getColumnCount(); j++) {
-//						excelCell = excelRow.createCell(j);
-//
-//						// Change the image column to output image path
-//						// Fourth column contains images
-//                        if (j == model.getColumnCount() - 1) {
-//                            JLabel excelJL = new JLabel((String) model.getValueAt(i, j));
-//                            ImageIcon excelImageIcon = (ImageIcon) excelJL.getIcon();
-//                            // Image Name Is Stored In ImageIcons Description first set it when saving image in the jtable cell and then retrieve it.
-//                            excelImagePath = excelImageIcon.getDescription();
-//                        }
-//
-//						excelCell.setCellValue(model.getValueAt(i, j).toString());
-//                        if (excelCell.getColumnIndex() == model.getColumnCount() - 1) {
-//                            excelCell.setCellValue(excelImagePath);
-//                        }
-//					}
-//				}
-				
-				// Loop through the jtable columns and rows to get its values
+
 				for (int i = 0; i <= model.getRowCount(); i++) {
 					excelRow = excelSheet.createRow(i);
 					for (int j = 0; j < model.getColumnCount(); j++) {
@@ -231,7 +203,7 @@ public class MyProps {
 				}
 				
 				excelFos = new FileOutputStream(excelFileChooser.getSelectedFile() + ".xlsx");
-//				excelBos = new BufferedOutputStream(excelFos);
+
 				excelJTableExport.write(excelFos);
 				JOptionPane.showMessageDialog(null, "Exported Successfully");
 			}
@@ -245,7 +217,7 @@ public class MyProps {
 				if (excelFos != null) {
 					excelFos.close();
 				}
-//				excelBos.close();
+
 				if (excelJTableExport != null) {
 					excelJTableExport.close();
 				}
@@ -255,7 +227,7 @@ public class MyProps {
 		}
 	}
 
-	// hàm tham khảo, KHÔNG DÙNG HÀM NÀY
+
 	public void ExportExcelTable(DefaultTableModel table) {
 		XSSFWorkbook workbook = null;
 		FileOutputStream out = null;
@@ -273,11 +245,11 @@ public class MyProps {
 			XSSFRow row = sheet.createRow(0);
 			XSSFCell cell;
 
-			// set cell value
+
 			int rowCount = table.getRowCount();
 			int colCount = table.getColumnCount();
 
-//			JTableHeader header = table.getTableHeader();
+
 
 			for (int i = 0; i <= rowCount; i++) {
 				row = sheet.createRow(i);

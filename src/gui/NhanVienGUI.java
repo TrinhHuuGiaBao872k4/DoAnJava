@@ -35,9 +35,9 @@ public class NhanVienGUI extends JPanel {
 	JTable tblNV;
 
 	JPanel pnlForm;
-	// avatar
+
 	JPanel pnlImg;
-	// label
+
 	JLabel lblTK_Ten;
 	JLabel lblMaNV;
 	JLabel lblHoNV;
@@ -48,7 +48,7 @@ public class NhanVienGUI extends JPanel {
 	JLabel lblSDT;
 	JLabel lblDiaChi;
 	JLabel lblAvatar;
-	// text field
+
 	JTextField txtTK_Ten;
 	JTextField txtMaNV;
 	JTextField txtHoNV;
@@ -58,16 +58,16 @@ public class NhanVienGUI extends JPanel {
 	JTextField txtGioiTinh;
 	JTextField txtSDT;
 	JTextField txtDiaChi;
-	// combo box
+
 	JComboBox<String> boxGioiTinh;
-	// button
+
 	JButton btnThem;
 	JButton btnXoa;
 	JButton btnSua;
 	JButton btnTK;
 
 	final String TK_Ten = "Tìm kiếm";
-	// table header title
+
 	final String MA_NV = "Mã NV";
 	final String HO_NV = "Họ NV";
 	final String TEN_NV = "Tên NV";
@@ -77,12 +77,11 @@ public class NhanVienGUI extends JPanel {
 	final String SDT = "SĐT";
 	final String DIA_CHI = "Địa chỉ";
 
-	// hàm khởi tạo
 	public NhanVienGUI() {
 		initComponents();
 	}
 
-	// khởi tạo các component
+
 	private void initComponents() {
 		this.setLayout(null);
 		this.setBackground(Color.PINK);
@@ -103,7 +102,7 @@ public class NhanVienGUI extends JPanel {
 		btnTKClicked();
 	}
 
-	// khởi tạo Panel chứa form
+
 	private void initPnlForm() {
 		pnlForm = new JPanel();
 		pnlForm.setBounds(pnlImg.getWidth(), 0, ContentPanel.WIDTH - pnlImg.getWidth(), ContentPanel.HEIGHT * 60 / 100);
@@ -120,21 +119,18 @@ public class NhanVienGUI extends JPanel {
 		lblAvatar = new JLabel();
 		lblAvatar.setIcon(new javax.swing.ImageIcon("src\\img\\blank.png"));
 
-//		pnlImg.setBackground(Color.PINK);
+
 		pnlImg.add(lblAvatar);
 
 		this.add(pnlImg);
 	}
 
-	// khởi tạo form
+
 	private void initForm() {
 		GridBagConstraints cons = new GridBagConstraints();
 
 		cons = myProps.MyGridBagConstraints(1, 1, 3, 7, true, true);
-//		pnlForm.add(pnlImg, cons);
-//		pnlForm.add(pnlImg);
 
-		// tìm kiếm
 		lblTK_Ten = new JLabel(TK_Ten);
 		lblTK_Ten.setFont(myProps.DEFAULT_FONT_SMALL);
 		cons = myProps.MyGridBagConstraints(4, 0, 6, 1, true, true);
@@ -144,18 +140,18 @@ public class NhanVienGUI extends JPanel {
 		cons = myProps.MyGridBagConstraints(5, 0, 6, 1, true, true);
 		pnlForm.add(txtTK_Ten, cons);
 
-		// mã nhân viên
+
 		lblMaNV = new JLabel(MA_NV);
 		lblMaNV.setFont(myProps.DEFAULT_FONT_SMALL);
 		cons = myProps.MyGridBagConstraints(4, 1, 1, 1, true, true);
 		pnlForm.add(lblMaNV, cons);
 
 		txtMaNV = myProps.RoundedTextField(5);
-		txtMaNV.setEditable(false); // không cho sửa
+		txtMaNV.setEditable(false); 
 		cons = myProps.MyGridBagConstraints(5, 1, 2, 1, true, true);
 		pnlForm.add(txtMaNV, cons);
 
-		// họ nhân viên
+
 		lblHoNV = new JLabel(HO_NV);
 		lblHoNV.setFont(myProps.DEFAULT_FONT_SMALL);
 		cons = myProps.MyGridBagConstraints(4, 2, 1, 1, true, true);
@@ -165,7 +161,7 @@ public class NhanVienGUI extends JPanel {
 		cons = myProps.MyGridBagConstraints(5, 2, 2, 1, true, true);
 		pnlForm.add(txtHoNV, cons);
 
-		// tên nhân viên
+
 		lblTenNV = new JLabel(TEN_NV);
 		lblTenNV.setFont(myProps.DEFAULT_FONT_SMALL);
 		cons = myProps.MyGridBagConstraints(7, 2, 1, 1, true, true);
@@ -175,15 +171,13 @@ public class NhanVienGUI extends JPanel {
 		cons = myProps.MyGridBagConstraints(8, 2, 1, 1, true, true);
 		pnlForm.add(txtTenNV, cons);
 
-		// giới tính
+
 		lblGioiTinh = new JLabel(GIOI_TINH);
 		lblGioiTinh.setFont(myProps.DEFAULT_FONT_SMALL);
 		cons = myProps.MyGridBagConstraints(9, 2, 1, 1, true, true);
 		pnlForm.add(lblGioiTinh, cons);
 
-//		txtGioiTinh = myProps.RoundedTextField(5);
-//		cons = myProps.MyGridBagConstraints(10, 2, 1, 1, true, true);
-//		pnlForm.add(txtGioiTinh, cons);
+
 
 		String[] arrGioiTinh = { "Nam", "Nữ" };
 		boxGioiTinh = new JComboBox<String>(arrGioiTinh);
@@ -191,7 +185,7 @@ public class NhanVienGUI extends JPanel {
 		cons = myProps.MyGridBagConstraints(10, 2, 1, 1, true, true);
 		pnlForm.add(boxGioiTinh, cons);
 
-		// số CMND
+
 		lblSoCMND = new JLabel(SO_CMND);
 		lblSoCMND.setFont(myProps.DEFAULT_FONT_SMALL);
 		cons = myProps.MyGridBagConstraints(4, 3, 1, 1, true, true);
@@ -201,7 +195,7 @@ public class NhanVienGUI extends JPanel {
 		cons = myProps.MyGridBagConstraints(5, 3, 3, 1, true, true);
 		pnlForm.add(txtSoCMND, cons);
 
-		// ngày sinh
+
 		lblNgaySinh = new JLabel(NGAY_SINH);
 		lblNgaySinh.setFont(myProps.DEFAULT_FONT_SMALL);
 		cons = myProps.MyGridBagConstraints(8, 3, 1, 1, true, true);
@@ -211,7 +205,7 @@ public class NhanVienGUI extends JPanel {
 		cons = myProps.MyGridBagConstraints(9, 3, 2, 1, true, true);
 		pnlForm.add(txtNgaySinh, cons);
 
-		// sđt
+
 		lblSDT = new JLabel(SDT);
 		lblSDT.setFont(myProps.DEFAULT_FONT_SMALL);
 		cons = myProps.MyGridBagConstraints(4, 4, 1, 1, true, true);
@@ -221,7 +215,7 @@ public class NhanVienGUI extends JPanel {
 		cons = myProps.MyGridBagConstraints(5, 4, 6, 1, true, true);
 		pnlForm.add(txtSDT, cons);
 
-		// địa chỉ
+
 		lblDiaChi = new JLabel(DIA_CHI);
 		lblDiaChi.setFont(myProps.DEFAULT_FONT_SMALL);
 		cons = myProps.MyGridBagConstraints(4, 5, 1, 1, true, true);
@@ -232,36 +226,34 @@ public class NhanVienGUI extends JPanel {
 		pnlForm.add(txtDiaChi, cons);
 	}
 
-	// khởi tạo table Nhân viên
+
 	private void initTblNV() {
 		tblNV = new JTable() {
 			public boolean isCellEditable(int rowIndex, int colIndex) {
-				return false; // Disallow the editing of any cell
+				return false; 
 			}
 		};
 
-//		tblNV = new JTable();
-//		tblNV.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 
-		// đọc dữ liệu
+
+
 		setModelTable();
 
-		// không cho phép di chuyển vị trí columns
+	
 		tblNV.getTableHeader().setReorderingAllowed(false);
 
-		// không cho phép resize column
+
 		tblNV.getTableHeader().setResizingAllowed(false);
 
-		// sắp xếp khi click header
+
 		tblNV.setAutoCreateRowSorter(true);
 
-		// scroll bar
 		JScrollPane scroll = new JScrollPane(tblNV);
 
 		pnlTable.add(scroll);
 	}
 
-	// khởi tạo Panel chứa table
+
 	private void initPnlTable() {
 		pnlTable = new JPanel();
 		pnlTable.setLayout(new GridLayout(1, 1));
@@ -271,7 +263,7 @@ public class NhanVienGUI extends JPanel {
 	}
 
 	private void setModelTable() {
-		// table header
+
 		Vector<String> header = new Vector<String>();
 		header.add(MA_NV);
 		header.add(HO_NV);
@@ -297,10 +289,6 @@ public class NhanVienGUI extends JPanel {
 		ArrayList<NhanVienDTO> lstNV = new ArrayList<NhanVienDTO>();
 		lstNV = nvBUS.NhanVienAll(txtTK_Ten.getText());
 
-//        test
-//        for (int i = 0; i< lstNV.size(); i++) {
-//        	System.out.print(lstNV.get(i).getHoNV() + "\n");
-//        }
 
 		NhanVienDTO aNV = new NhanVienDTO();
 
@@ -322,7 +310,7 @@ public class NhanVienGUI extends JPanel {
 				txtMaNV.setText(tblNV.getValueAt(row, 0).toString());
 				txtHoNV.setText(tblNV.getValueAt(row, 1).toString());
 				txtTenNV.setText(tblNV.getValueAt(row, 2).toString());
-//				txtGioiTinh.setText(tblNV.getValueAt(row, 5).toString());
+
 				boxGioiTinh.setSelectedItem(tblNV.getValueAt(row, 5).toString());
 				txtSoCMND.setText(tblNV.getValueAt(row, 3).toString());
 				txtNgaySinh.setText(tblNV.getValueAt(row, 4).toString());

@@ -11,7 +11,7 @@ public class RoundJTextField extends JTextField {
 
 	public RoundJTextField(int size) {
 		super(size);
-		setOpaque(false); // As suggested by @AVD in comment.
+		setOpaque(false);
 	}
 
 	protected void paintComponent(Graphics g) {

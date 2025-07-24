@@ -11,7 +11,7 @@ public class NhanVienDTO {
 	private String DiaChi;
 	private int MaLuong;
 
-	// GETTERs
+
 	public int getMaNV() {
 		return MaNV;
 	}
@@ -40,7 +40,7 @@ public class NhanVienDTO {
 		return SDT;
 	}
 
-	// SETTERs
+
 	public void setMaNV(int maNV) {
 		MaNV = maNV;
 	}

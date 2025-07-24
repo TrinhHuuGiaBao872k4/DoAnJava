@@ -38,17 +38,15 @@ public class MySqlDataAccessHelper {
 	}
 
 	protected Connection getConnect() {
-		// If connect != null -> return
 		if (this.connect == null) {
-			// Check for driver
 			driverTest();
 
-			// Create URL connect to DB server
+
 			String url = "jdbc:mysql://" + this.Host + "/" + this.DataBase
 					+ "?useLegacyDatetimeCode=false&serverTimezone=UTC";
 			url += "&user=" + this.UserName;
 			url += "&password=" + this.Password;
-			// create connect
+
 			try {
 				this.connect = DriverManager.getConnection(url);
 			} catch (SQLException e) {
@@ -58,7 +56,7 @@ public class MySqlDataAccessHelper {
 		return this.connect;
 	}
 
-	// Create statement to execute query
+
 	protected Statement getStatement() {
 		if (this.stmt == null) {
 			try {
@@ -94,7 +92,6 @@ public class MySqlDataAccessHelper {
 		return res;
 	}
 
-	// Create prepared statement
 	public void prepare(String sql) {
 		try {
 			this.preStmt = this.getConnect().prepareStatement(sql);
@@ -105,7 +102,7 @@ public class MySqlDataAccessHelper {
 		}
 	}
 
-	// Bind value
+
 	public void bind(int index, Object o) {
 		try {
 			if (o == null) {
@@ -130,11 +127,10 @@ public class MySqlDataAccessHelper {
 		}
 	}
 
-	// Execute
+
 	public ResultSet executeQueryPre() {
 		try {
-			// for debug
-//			System.out.println(this.preStmt.toString());
+
 			this.result = this.preStmt.executeQuery();
 		} catch (SQLException e) {
 			displayError(e);
@@ -145,8 +141,7 @@ public class MySqlDataAccessHelper {
 	public int executeUpdatePre() {
 		int res = Integer.MIN_VALUE;
 		try {
-			// for debug
-//			System.out.println(this.preStmt.toString());
+
 			res = this.preStmt.executeUpdate();
 		} catch (SQLException e) {
 			displayError(e);

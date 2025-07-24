@@ -18,7 +18,7 @@ public class NavPanel extends JPanel {
 	public static final int WIDTH = MyProps.DEFAULT_WIDTH * 20 / 100;
 	public static final int HEIGHT = MyProps.DEFAULT_HEIGHT - HeaderPanel.HEIGHT;
 
-//	private final String HOME = "Home";
+
 	private final String NHAN_VIEN = "Nhân viên";
 	private final String PHONG_BAN = "Phòng ban";
 	private final String CHAM_CONG = "Chấm công";
@@ -34,7 +34,7 @@ public class NavPanel extends JPanel {
 		initNavLink();
 	}
 
-	// Khởi tạo các link của navigations
+
 	private void initNavLink() {
 		navLink = new ArrayList<JButton>();
 
@@ -55,13 +55,13 @@ public class NavPanel extends JPanel {
 			initBtn(navLink.get(i), lbl.get(i), i);
 		}
 
-		// add to panel
+
 		for (int i = 0; i < arrSize; i++) {
 			this.add(navLink.get(i));
 		}
 	}
 
-	// Khởi tạo các button
+
 	private void initBtn(JButton btn, String lbl, int index) {
 		btn.setText(lbl);
 		btn.setBackground(Color.decode(myProps.Color_Teal));
@@ -128,12 +128,12 @@ public class NavPanel extends JPanel {
 	}
 
 	private void switchPanel(JPanel parentPanel, JPanel childPanel) {
-		// removing panel
+
 		parentPanel.removeAll();
 		parentPanel.repaint();
 		parentPanel.revalidate();
 
-		// adding panel
+
 		parentPanel.add(childPanel);
 		parentPanel.repaint();
 		parentPanel.revalidate();

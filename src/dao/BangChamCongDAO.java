@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao;
 
 import dto.BangChamCongDTO;
@@ -30,15 +25,15 @@ public class BangChamCongDAO {
 		try {
 			ResultSet rs = conn.executeQuery(query);
 			while (rs.next()) {
-				// khởi tạo
+
 				BangChamCongDTO aBangChamCong = new BangChamCongDTO();
 
-				// gán giá trị
+
 				aBangChamCong.setMaChamCong(rs.getInt("machamcong"));
 				aBangChamCong.setNgayTrongThang(rs.getInt("ngaytrongthang"));
 				aBangChamCong.setTrangThai(rs.getString("trangthai"));
 
-				// thêm vào array list
+
 				arr.add(aBangChamCong);
 			}
 		} catch (SQLException ex) {
@@ -50,17 +45,17 @@ public class BangChamCongDAO {
 		return arr;
 	}
 
-	// Thêm
+
 	public void BangChamCongAdd(BangChamCongDTO aBCC) {
 		MySqlDataAccessHelper conn = new MySqlDataAccessHelper();
 
 		String sql = "INSERT INTO bangchamcong (machamcong, ngaytrongthang, trangthai) "
 				+ "VALUES(?, ?, ?) ON DUPLICATE KEY UPDATE trangthai = ?";
 
-		// prepare statement
+
 		conn.prepare(sql);
 
-		// bind values
+
 		conn.bind(1, aBCC.getMaChamCong());
 		conn.bind(2, aBCC.getNgayTrongThang());
 		conn.bind(3, aBCC.getTrangThai());
@@ -71,15 +66,15 @@ public class BangChamCongDAO {
 		conn.Close();
 	}
 
-	// Sửa
+
 	public void BangChamCongEdit(BangChamCongDTO aBCC) {
 		MySqlDataAccessHelper conn = new MySqlDataAccessHelper();
 
 		String sql = "UPDATE bangchamcong SET ngaytrongthang = ?, trangthai = ? WHERE machamcong = ?";
-		// prepare statement
+
 		conn.prepare(sql);
 
-		// bind values
+
 		conn.bind(1, aBCC.getNgayTrongThang());
 		conn.bind(2, aBCC.getTrangThai());
 
@@ -90,16 +85,15 @@ public class BangChamCongDAO {
 		conn.Close();
 	}
 
-	// xóa
+
 	public void BangChamCongDelete(int machamcong) {
 		MySqlDataAccessHelper conn = new MySqlDataAccessHelper();
 
 		String sql = "DELETE FROM bangchamcong WHERE machamcong = ?";
 
-		// prepare statement
 		conn.prepare(sql);
 
-		// bind values
+
 		conn.bind(1, machamcong);
 
 		conn.executeUpdatePre();
@@ -122,15 +116,13 @@ public class BangChamCongDAO {
 		try {
 			ResultSet rs = conn.executeQueryPre();
 			while (rs.next()) {
-				// khởi tạo
+
 				BangChamCongDTO aBangChamCong = new BangChamCongDTO();
 
-				// gán giá trị
+
 				aBangChamCong.setMaChamCong(rs.getInt("machamcong"));
 				aBangChamCong.setNgayTrongThang(rs.getInt("ngaytrongthang"));
 				aBangChamCong.setTrangThai(rs.getString("trangthai"));
-
-				// thêm vào array list
 				arr.add(aBangChamCong);
 			}
 		} catch (SQLException ex) {
@@ -140,15 +132,13 @@ public class BangChamCongDAO {
 		conn.Close();
 
 		if (arr.size() == 0) {
-			// khởi tạo
-			BangChamCongDTO aBangChamCong = new BangChamCongDTO();
 
-			// gán giá trị
+			BangChamCongDTO aBangChamCong = new BangChamCongDTO();
 			aBangChamCong.setMaChamCong(machamcong);
 			aBangChamCong.setNgayTrongThang(ngay);
 			aBangChamCong.setTrangThai("");
 
-			// thêm vào array list
+
 			arr.add(aBangChamCong);
 		}
 
@@ -169,15 +159,13 @@ public class BangChamCongDAO {
 		try {
 			ResultSet rs = conn.executeQueryPre();
 			while (rs.next()) {
-				// khởi tạo
+
 				BangChamCongDTO aBangChamCong = new BangChamCongDTO();
 
-				// gán giá trị
 				aBangChamCong.setMaChamCong(rs.getInt("machamcong"));
 				aBangChamCong.setNgayTrongThang(rs.getInt("ngaytrongthang"));
 				aBangChamCong.setTrangThai(rs.getString("trangthai"));
 
-				// thêm vào array list
 				arr.add(aBangChamCong);
 			}
 		} catch (SQLException ex) {

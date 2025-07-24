@@ -63,7 +63,6 @@ public class HopDongLaoDongBUS {
 		header.add("Đến");
 		header.add("Chức vụ");
 		header.add("Phòng ban");
-
 		DefaultTableModel dtm = new DefaultTableModel(header, 0) {
 			@Override
 			public Class<?> getColumnClass(int column) {
@@ -75,6 +74,7 @@ public class HopDongLaoDongBUS {
 				}
 			}
 		};
+	
 		
 		String thang1String = nam1 + "-" + thang1 + "-1";
 		String thang2String = nam2 + "-" + thang2 + "-1";

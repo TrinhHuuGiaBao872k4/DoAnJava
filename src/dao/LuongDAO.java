@@ -9,7 +9,7 @@ import util.MySqlDataAccessHelper;
 public class LuongDAO {
 	public static Object arr;
 
-	// lay ds luong
+
 	public ArrayList<LuongDTO> LuongAll() {
 		MySqlDataAccessHelper conn = new MySqlDataAccessHelper();
 		ArrayList<LuongDTO> arr = new ArrayList<LuongDTO>();
@@ -17,14 +17,12 @@ public class LuongDAO {
 		try {
 			ResultSet rs = conn.executeQuery(sql);
 			while (rs.next()) {
-				// khoi tao
+
 				LuongDTO luong = new LuongDTO();
-				// gan gt
 				luong.setMaLuong(rs.getInt("maluong"));
-//				luong.setHeSoLuong(rs.getFloat("HeSoLuong"));
+
 				luong.setLuongCB(rs.getInt("luongcoban"));
-//				luong.setHeSoPhuCap(rs.getFloat("HeSoPhuCap"));
-				// them vao arraylist
+
 				arr.add(luong);
 			}
 		} catch (SQLException ex) {
@@ -43,14 +41,13 @@ public class LuongDAO {
 		try {
 			ResultSet rs = conn.executeQuery(sql);
 			while (rs.next()) {
-				// khoi tao
+
 				LuongDTO luong = new LuongDTO();
-				// gan gt
+
 				luong.setMaLuong(rs.getInt("maluong"));
-//				luong.setHeSoLuong(rs.getFloat("HeSoLuong"));
+
 				luong.setLuongCB(rs.getInt("luongcoban"));
-//				luong.setHeSoPhuCap(rs.getFloat("HeSoPhuCap"));
-				// them vao arraylist
+
 				arr.add(luong);
 			}
 		} catch (SQLException ex) {
@@ -61,33 +58,30 @@ public class LuongDAO {
 		return arr.get(0).getLuongCB();
 	}
 
-	// them
+
 	public void LuongAdd(LuongDTO luongadd) {
 		MySqlDataAccessHelper conn = new MySqlDataAccessHelper();
 		String sql = "INSERT INTO luong(luongcoban) VALUES(?)";
-		// prepare statement
 		conn.prepare(sql);
-		// bind values
-//		conn.bind(1, luongadd.getHeSoLuong());
+
 		conn.bind(1, luongadd.getLuongCB());
-//		conn.bind(3, luongadd.getHeSoPhuCap());
+
 
 		conn.executeUpdatePre();
 
 		conn.Close();
 	}
 
-	// sua
+
 	public void LuongEdit(LuongDTO luongadd) {
 		MySqlDataAccessHelper conn = new MySqlDataAccessHelper();
 		String sql = "UPDATE luong SET luongcoban = ? WHERE maluong = ?";
-		// prepare statement
+
 		conn.prepare(sql);
 
-		// bind values
-//		conn.bind(1, luongadd.getHeSoLuong());
+
 		conn.bind(1, luongadd.getLuongCB());
-//		conn.bind(3, luongadd.getHeSoPhuCap());
+
 		conn.bind(2, luongadd.getMaLuong());
 
 		conn.executeUpdatePre();
@@ -95,7 +89,7 @@ public class LuongDAO {
 		conn.Close();
 	}
 
-	// xoa
+
 	public void LuongDelete(int maluong) {
 		MySqlDataAccessHelper conn = new MySqlDataAccessHelper();
 

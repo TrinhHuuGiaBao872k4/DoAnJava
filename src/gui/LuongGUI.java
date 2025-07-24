@@ -64,16 +64,16 @@ public class LuongGUI extends JPanel {
 		initComponents();
 	}
 
-	// khởi tạo các component
+
 	private void initComponents() {
 		this.setLayout(new GridLayout(1, 2));
-//		this.setBackground(Color.PINK);
+
 
 		initPanelLuong();
 		initFormLuong();
 		initTableLuong();
 
-		// button phong ban
+
 		initButtonLuong();
 		btnLgThemClicked();
 		btnLgXoaClicked();
@@ -83,7 +83,7 @@ public class LuongGUI extends JPanel {
 		initTableNhanVien();
 		initButtonNhanVien();
 
-		// button nhan vien
+
 		btnNvDoiLuongClicked();
 
 		tblLgMouseListener();
@@ -104,18 +104,18 @@ public class LuongGUI extends JPanel {
 
 	private void initFormLuong() {
 		GridBagConstraints cons = new GridBagConstraints();
-		// mã nhân viên
+
 		lblLgMaLuong = new JLabel(MA_LUONG);
 		lblLgMaLuong.setFont(myProps.DEFAULT_FONT_SMALL);
 		cons = myProps.MyGridBagConstraints(1, 1, 1, 1, true, true);
 		pnlLuong.add(lblLgMaLuong, cons);
 
 		txtLgMaLuong = myProps.RoundedTextField(5);
-		txtLgMaLuong.setEditable(false); // không cho sửa
+		txtLgMaLuong.setEditable(false);
 		cons = myProps.MyGridBagConstraints(2, 1, 1, 1, true, true);
 		pnlLuong.add(txtLgMaLuong, cons);
 
-		// họ nhân viên
+
 		lblLgLuongCB = new JLabel(LUONG_CB);
 		lblLgLuongCB.setFont(myProps.DEFAULT_FONT_SMALL);
 		cons = myProps.MyGridBagConstraints(3, 1, 1, 1, true, true);
@@ -129,31 +129,30 @@ public class LuongGUI extends JPanel {
 	private void initTableLuong() {
 		tblLuong = new JTable() {
 			public boolean isCellEditable(int rowIndex, int colIndex) {
-				return false; // Disallow the editing of any cell
+				return false; 
 			}
 		};
 
-		// không cho phép di chuyển vị trí columns
+
 		tblLuong.getTableHeader().setReorderingAllowed(false);
 
-		// không cho phép resize column
+
 		tblLuong.getTableHeader().setResizingAllowed(false);
 
-		// sắp xếp khi click header
 		tblLuong.setAutoCreateRowSorter(true);
 
 		setModelTableLg();
 
 		GridBagConstraints cons = myProps.MyGridBagConstraints(1, 2, 4, 5, true, true);
 
-		// scroll bar
+
 		JScrollPane scroll = new JScrollPane(tblLuong);
 
 		pnlLuong.add(scroll, cons);
 	}
 
 	private void setModelTableLg() {
-		// table header
+
 		Vector<String> header = new Vector<String>();
 		header.add(MA_LUONG);
 		header.add(LUONG_CB);
@@ -241,33 +240,31 @@ public class LuongGUI extends JPanel {
 	private void initTableNhanVien() {
 		tblNV = new JTable() {
 			public boolean isCellEditable(int rowIndex, int colIndex) {
-				return false; // Disallow the editing of any cell
+				return false; 
 			}
 		};
 
-		// đọc dữ liệu
+
 		ArrayList<NhanVienDTO> lstNV = new ArrayList<NhanVienDTO>();
 		setModelTableNV(lstNV);
 
-		// không cho phép di chuyển vị trí columns
 		tblNV.getTableHeader().setReorderingAllowed(false);
 
-		// không cho phép resize column
+
 		tblNV.getTableHeader().setResizingAllowed(false);
 
-		// sắp xếp khi click header
+
 		tblNV.setAutoCreateRowSorter(true);
 
 		GridBagConstraints cons = myProps.MyGridBagConstraints(1, 1, 4, 5, true, true);
 
-		// scroll bar
 		JScrollPane scroll = new JScrollPane(tblNV);
 
 		pnlNV.add(scroll, cons);
 	}
 
 	private void setModelTableNV(ArrayList<NhanVienDTO> lstNV) {
-		// table header
+
 		Vector<String> header = new Vector<String>();
 		header.add(MA_NV);
 		header.add(TEN_NV);
@@ -398,7 +395,7 @@ public class LuongGUI extends JPanel {
 		pnlNV.add(pnlBtn, cons);
 	}
 
-	// đổi lương
+
 	private void btnNvDoiLuongClicked() {
 		btnNvDoiLuong.addActionListener(new ActionListener() {
 			@Override
@@ -425,7 +422,7 @@ public class LuongGUI extends JPanel {
 	}
 
 	private void FrameDoiLuong(int maNv) {
-//		int maLg = Integer.valueOf(txtLgMaLuong.getText());
+
 		JFrame lgFrame = new JFrame("Chọn lương");
 
 		lgFrame.setSize(MyProps.DEFAULT_WIDTH / 2, MyProps.DEFAULT_HEIGHT / 2);
@@ -451,7 +448,7 @@ public class LuongGUI extends JPanel {
 
 		JTable tblLgTemp = new JTable() {
 			public boolean isCellEditable(int rowIndex, int colIndex) {
-				return false; // Disallow the editing of any cell
+				return false; 
 			}
 
 			@Override
@@ -460,19 +457,18 @@ public class LuongGUI extends JPanel {
 			}
 		};
 
-		// không cho phép di chuyển vị trí columns
 		tblLgTemp.getTableHeader().setReorderingAllowed(false);
 
-		// không cho phép resize column
+
 		tblLgTemp.getTableHeader().setResizingAllowed(false);
 
-		// sắp xếp khi click header
+
 		tblLgTemp.setAutoCreateRowSorter(true);
 
-		// đọc dữ liệu
+
 		ArrayList<LuongDTO> lstLg = luongBUS.LuongAll();
 
-		// table header
+
 		Vector<String> header = new Vector<String>();
 		header.add(MA_LUONG);
 		header.add(LUONG_CB);
@@ -499,7 +495,7 @@ public class LuongGUI extends JPanel {
 
 		tblLgTemp.setModel(dtm);
 
-		// scroll bar
+
 		JScrollPane scroll = new JScrollPane(tblLgTemp);
 
 		GridBagConstraints cons = myProps.MyGridBagConstraints(1, 1, 1, 1, true, true);

@@ -32,7 +32,7 @@ public class NhanVienBUS {
 
 		nv = nvDAO.NhanVienMoiNhat();
 
-		// them hdld
+
 		HopDongLaoDongDAO hdDAO = new HopDongLaoDongDAO();
 		HopDongLaoDongDTO hd = new HopDongLaoDongDTO();
 
