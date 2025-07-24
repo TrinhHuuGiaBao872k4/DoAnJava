@@ -32,7 +32,7 @@ public class RoundedCornerBorder extends AbstractBorder {
 	}
 
 	public Shape getBorderShape(int x, int y, int w, int h) {
-		int r = h; // h / 2;
+		int r = h; 
 		return new RoundRectangle2D.Double(x, y, w, h, r, r);
 	}
 

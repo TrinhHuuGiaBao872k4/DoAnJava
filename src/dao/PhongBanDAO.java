@@ -42,10 +42,10 @@ public class PhongBanDAO {
 
 		String sql = "INSERT INTO phongban (tenphong, matruongphong) " + "VALUES(?, ?)";
 
-		// prepare statement
+
 		conn.prepare(sql);
 
-		// bind values
+
 		conn.bind(1, PB.getTenPhong());
 		conn.bind(2, PB.getMaTruongPhong());
 
@@ -77,9 +77,7 @@ public class PhongBanDAO {
 		String sql = "DELETE FROM PhongBan WHERE maphong = ?";
 
 		conn.prepare(sql);
-
 		conn.bind(1, maPb);
-
 		conn.executeUpdatePre();
 
 		conn.Close();

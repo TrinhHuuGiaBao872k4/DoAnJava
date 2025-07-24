@@ -9,7 +9,6 @@ import util.MySqlDataAccessHelper;
 public class ChiTietLuongDAO {
 	public static Object arr;
 
-	// lay ds chitietluong
 	public ArrayList<ChiTietLuongDTO> ChiTietLuongAll() {
 		MySqlDataAccessHelper conn = new MySqlDataAccessHelper();
 		ArrayList<ChiTietLuongDTO> arr = new ArrayList<ChiTietLuongDTO>();
@@ -17,14 +16,14 @@ public class ChiTietLuongDAO {
 		try {
 			ResultSet rs = conn.executeQuery(sql);
 			while (rs.next()) {
-				// khoi tao
+
 				ChiTietLuongDTO ct = new ChiTietLuongDTO(null);
-				// gan gt
+	
 				ct.setMaLuong(rs.getInt("MaLuong"));
 				ct.setLuongCB(rs.getInt("LuongCB"));
 				ct.setTongSoNgay(rs.getInt("TongSoNgay"));
 				ct.setSoNgayNghi(rs.getInt("SoNgayNghi"));
-				// them vao arraylist
+
 				arr.add(ct);
 			}
 		} catch (SQLException ex) {
@@ -34,13 +33,13 @@ public class ChiTietLuongDAO {
 		return arr;
 	}
 
-	// them
+
 	public void ChiTietLuongAdd(ChiTietLuongDTO chitietluongadd) {
 		MySqlDataAccessHelper conn = new MySqlDataAccessHelper();
 		String sql = "INSERT INTO luong (tongsongay, luongcb, songaynghi)" + "VALUES(?, ?, ?)";
-		// prepare statement
+
 		conn.prepare(sql);
-		// bind values
+
 		conn.bind(1, chitietluongadd.getTongSoNgay());
 		conn.bind(2, chitietluongadd.getLuongCB());
 		conn.bind(3, chitietluongadd.getSoNgayNghi());
@@ -50,14 +49,14 @@ public class ChiTietLuongDAO {
 		conn.Close();
 	}
 
-	// sua
+
 	public void ChiTietLuongEdit(ChiTietLuongDTO chitietluongadd) {
 		MySqlDataAccessHelper conn = new MySqlDataAccessHelper();
 		String sql = "UPDATE luong SET tongsongay = ?, luongcb = ?, songaynghi = ? WHERE maluong = ?";
-		// prepare statement
+
 		conn.prepare(sql);
 
-		// bind values
+
 		conn.bind(1, chitietluongadd.getTongSoNgay());
 		conn.bind(2, chitietluongadd.getLuongCB());
 		conn.bind(3, chitietluongadd.getSoNgayNghi());
@@ -68,7 +67,7 @@ public class ChiTietLuongDAO {
 		conn.Close();
 	}
 
-	// xoa
+
 	public void ChiTietLuongDelete(int maluong) {
 		MySqlDataAccessHelper conn = new MySqlDataAccessHelper();
 

@@ -82,7 +82,7 @@ public class KhenThuongGUI extends JPanel {
 	
 	private void initPanelForm() {
 		pnlForm = new JPanel();
-//		pnlForm.setLayout(new GridBagLayout());
+
 		
 		GridBagConstraints cons = myProps.MyGridBagConstraints(1, 1, 5, 1, true, true);
 	
@@ -90,26 +90,23 @@ public class KhenThuongGUI extends JPanel {
 	}
 	
 	private void initForm() {
-//		GridBagConstraints cons = new GridBagConstraints();
+
 		
 		lblTenNV = new JLabel(TEN_NV);
 		lblTenNV.setFont(myProps.DEFAULT_FONT_SMALL_BOLD);
-//		cons = myProps.MyGridBagConstraints(1, 1, 1, 1, true, true);
-//		pnlForm.add(lblTenNV, cons);
+
 		pnlForm.add(lblTenNV);
 		
 		txtTenNV = new JTextField(10);
 		txtTenNV.setEditable(false);
-//		cons = myProps.MyGridBagConstraints(2, 1, 1, 1, true, true);
-//		pnlForm.add(txtTenNV, cons);
+
 		pnlForm.add(txtTenNV);
 		
 		btnChonNV = new JButton("...");
 		myProps.BtnFlat(btnChonNV);
 		btnChonNV.setBackground(Color.decode("#e0e0e0"));
 		btnChonNV.setForeground(Color.BLACK);
-//		cons = myProps.MyGridBagConstraints(3, 1, 1, 1, true, true);
-//		pnlForm.add(btnChonNV, cons);
+
 		pnlForm.add(btnChonNV);
 		
 		
@@ -144,25 +141,15 @@ public class KhenThuongGUI extends JPanel {
 	private void initTableKT() {
 		tblKT = new JTable() {
 			public boolean isCellEditable(int rowIndex, int colIndex) {
-				return false; // Disallow the editing of any cell
+				return false; 
 			}
 		};
 
-//		tblNV = new JTable();
-//		tblNV.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 
-		// không cho phép di chuyển vị trí columns
 		tblKT.getTableHeader().setReorderingAllowed(false);
-
-		// không cho phép resize column
-//		tblKT.getTableHeader().setResizingAllowed(false);
-
-		// sắp xếp khi click header
 		tblKT.setAutoCreateRowSorter(true);
 
-//		tblKT.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-		// scroll bar
 		JScrollPane scroll = new JScrollPane(tblKT, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
@@ -177,10 +164,10 @@ public class KhenThuongGUI extends JPanel {
 
 		lstKT = ktBUS.KhenThuongAll();
 
-		// table header
+
 		Vector<String> header = new Vector<String>();
 		header.add("Mã khen thưởng");
-//		header.add("Mã NV");
+
 		header.add("Nhân viên");
 		header.add("Ngày");
 		header.add("Hình thức");
@@ -208,7 +195,7 @@ public class KhenThuongGUI extends JPanel {
 
 			ArrayList<Object> lstRow = new ArrayList<Object>();
 			lstRow.add(kt.getMaKhenThuong());
-//			lstRow.add(kt.getMaNV());
+
 			lstRow.add(nv.getHoNV() + " " + nv.getTenNV());
 			lstRow.add(kt.getNgayKhenThuong());
 			lstRow.add(kt.getHinhThuc());
@@ -343,7 +330,7 @@ public class KhenThuongGUI extends JPanel {
 
 		JTable tblNvTemp = new JTable() {
 			public boolean isCellEditable(int rowIndex, int colIndex) {
-				return false; // Disallow the editing of any cell
+				return false; 
 			}
 
 			@Override
@@ -352,26 +339,21 @@ public class KhenThuongGUI extends JPanel {
 			}
 		};
 
-		// không cho phép di chuyển vị trí columns
+
 		tblNvTemp.getTableHeader().setReorderingAllowed(false);
 
-		// không cho phép resize column
+
 		tblNvTemp.getTableHeader().setResizingAllowed(false);
 
-		// sắp xếp khi click header
+
 		tblNvTemp.setAutoCreateRowSorter(true);
 
-		// đọc dữ liệu
+
 		ArrayList<NhanVienDTO> lstNV = nvBUS.NhanVienAll("");
 
-		// table header
+
 		Vector<String> header = new Vector<String>();
-//		header.add("Mã khen thưởng");
-//		header.add("Nhân viên");
-//		header.add("Ngày");
-//		header.add("Hình thức");
-//		header.add("Lý do");
-//		header.add("Tiền thưởng");
+
 		
 		header.add("Mã NV");
 		header.add("Nhân viên");
@@ -399,7 +381,6 @@ public class KhenThuongGUI extends JPanel {
 
 		tblNvTemp.setModel(dtm);
 
-		// scroll bar
 		JScrollPane scroll = new JScrollPane(tblNvTemp);
 
 		GridBagConstraints cons = myProps.MyGridBagConstraints(1, 1, 1, 1, true, true);

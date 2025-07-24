@@ -99,7 +99,7 @@ public class LuongBUS {
 				break;
 		}
 		
-		// chấm công
+
 		double soNgayNghi = 0;
 		if (bangChamCong.size() < dateCount) {
 			JOptionPane.showMessageDialog(null, "Chưa đủ chấm công");
@@ -125,13 +125,13 @@ public class LuongBUS {
 			}
 		}
 		
-		// khen thưởng
+
 		ArrayList<KhenThuongDTO> khenThuongDTOs = ktDAO.KhenThuongGet(maNv, thang, nam);
 		for (int i = 0; i < khenThuongDTOs.size(); i++) {
 			khenThuong += khenThuongDTOs.get(i).getTienThuong();
 		}
 		
-		// phụ cấp
+
 		int maChucVu = hdDAO.HopDongMoiNhat(maNv).getMaCV();
 		
 		ChucVuDTO cvDTO = cvDAO.ChucVuGet(maChucVu);

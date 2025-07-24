@@ -118,7 +118,7 @@ public class ThongKeGUI extends JPanel {
 		ArrayList<String> lstOption = new ArrayList<String>();
 		lstOption.add("1. Lương NV theo tháng");
 		lstOption.add("2. Quá trình công tác");
-//		lstOption.add("3. Hello 3");
+
 
 		String[] arrayOption = lstOption.toArray(new String[0]);
 
@@ -148,7 +148,7 @@ public class ThongKeGUI extends JPanel {
 		lblDen = new JLabel("Đến");
 		lblDen.setFont(myProps.DEFAULT_FONT_SMALL_BOLD);
 
-		// combo box tháng
+
 		ArrayList<Integer> lstThang = new ArrayList<Integer>();
 		for (int i = 1; i <= 12; i++) {
 			lstThang.add(i);
@@ -159,7 +159,7 @@ public class ThongKeGUI extends JPanel {
 		boxThang1 = new JComboBox<Integer>(arrayThang);
 		boxThang1.setFont(myProps.DEFAULT_FONT_SMALL);
 
-		// combo box năm
+
 		ArrayList<Integer> lstNam = new ArrayList<Integer>();
 		for (int i = 2017; i <= 2019; i++) {
 			lstNam.add(i);
@@ -170,11 +170,10 @@ public class ThongKeGUI extends JPanel {
 		boxNam1 = new JComboBox<Integer>(arrayNam);
 		boxNam1.setFont(myProps.DEFAULT_FONT_SMALL);
 
-		// combo box tháng
 		boxThang2 = new JComboBox<Integer>(arrayThang);
 		boxThang2.setFont(myProps.DEFAULT_FONT_SMALL);
 
-		// combo box năm
+
 		boxNam2 = new JComboBox<Integer>(arrayNam);
 		boxNam2.setFont(myProps.DEFAULT_FONT_SMALL);
 
@@ -223,25 +222,16 @@ public class ThongKeGUI extends JPanel {
 	private void initTableThongKe() {
 		tblTK = new JTable() {
 			public boolean isCellEditable(int rowIndex, int colIndex) {
-				return false; // Disallow the editing of any cell
+				return false; 
 			}
 		};
 
-//		tblNV = new JTable();
+
 		tblTK.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 
-		// không cho phép di chuyển vị trí columns
 		tblTK.getTableHeader().setReorderingAllowed(false);
 
-		// không cho phép resize column
-//		tblChamCong.getTableHeader().setResizingAllowed(false);
 
-		// sắp xếp khi click header
-//		tblChamCong.setAutoCreateRowSorter(true);
-
-//		tblTK.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-
-		// scroll bar
 		JScrollPane scroll = new JScrollPane(tblTK, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
@@ -252,7 +242,7 @@ public class ThongKeGUI extends JPanel {
 	}
 
 	private void setModelTableOption1() {
-		// table header
+
 
 		DefaultTableModel dtm = lgBUS.LuongGet(maNv, Integer.valueOf(boxThang1.getSelectedItem().toString()),
 				Integer.valueOf(boxNam1.getSelectedItem().toString()));
@@ -265,7 +255,7 @@ public class ThongKeGUI extends JPanel {
 	}
 
 	private void setModelTableOption2() {
-		// table header
+
 		int thang1 = Integer.valueOf(boxThang1.getSelectedItem().toString());
 		int thang2 = Integer.valueOf(boxThang2.getSelectedItem().toString());
 		int nam1 = Integer.valueOf(boxNam1.getSelectedItem().toString());
@@ -301,8 +291,8 @@ public class ThongKeGUI extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				option = (String) boxOption.getSelectedItem();
-				option = option.substring(0, 1); // lấy số thống kê
-//				System.out.print(option);
+				option = option.substring(0, 1); 
+
 				switch (option) {
 				case "1":
 					option2Hide();
@@ -360,7 +350,7 @@ public class ThongKeGUI extends JPanel {
 
 		JTable tblNvTemp = new JTable() {
 			public boolean isCellEditable(int rowIndex, int colIndex) {
-				return false; // Disallow the editing of any cell
+				return false; 
 			}
 
 			@Override
@@ -369,26 +359,19 @@ public class ThongKeGUI extends JPanel {
 			}
 		};
 
-		// không cho phép di chuyển vị trí columns
+
 		tblNvTemp.getTableHeader().setReorderingAllowed(false);
 
-		// không cho phép resize column
+
 		tblNvTemp.getTableHeader().setResizingAllowed(false);
 
-		// sắp xếp khi click header
+	
 		tblNvTemp.setAutoCreateRowSorter(true);
 
-		// đọc dữ liệu
-		ArrayList<NhanVienDTO> lstNV = nvBUS.NhanVienAll("");
 
-		// table header
+		ArrayList<NhanVienDTO> lstNV = nvBUS.NhanVienAll("");
 		Vector<String> header = new Vector<String>();
-//		header.add("Mã khen thưởng");
-//		header.add("Nhân viên");
-//		header.add("Ngày");
-//		header.add("Hình thức");
-//		header.add("Lý do");
-//		header.add("Tiền thưởng");
+
 
 		header.add("Mã NV");
 		header.add("Nhân viên");
@@ -415,7 +398,7 @@ public class ThongKeGUI extends JPanel {
 
 		tblNvTemp.setModel(dtm);
 
-		// scroll bar
+
 		JScrollPane scroll = new JScrollPane(tblNvTemp);
 
 		GridBagConstraints cons = myProps.MyGridBagConstraints(1, 1, 1, 1, true, true);
@@ -522,7 +505,7 @@ public class ThongKeGUI extends JPanel {
 		Date date = new Date();
 		String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(date);
 		String fileName = txtNV.getText().replaceAll("\\s+", "");
-//		String fileName = "hello";
+
 		
 		if (fileName.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Vui lòng chọn nhân viên");
@@ -588,7 +571,7 @@ public class ThongKeGUI extends JPanel {
 				return;
 			}
 		} catch (DocumentException | IOException e1) {
-			// TODO Auto-generated catch block
+
 			e1.printStackTrace();
 		}
 
@@ -601,7 +584,7 @@ public class ThongKeGUI extends JPanel {
 		Date date = new Date();
 		String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(date);
 		String fileName = txtNV.getText().replaceAll("\\s+", "");
-//		String fileName = "hello";
+
 		
 		if (fileName.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Vui lòng chọn nhân viên");
@@ -635,11 +618,11 @@ public class ThongKeGUI extends JPanel {
 			Paragraph line = new Paragraph("--------------------\n", font_small);
 			
 			PdfPTable pdfTable = new PdfPTable(tblTK.getColumnCount());
-            //adding table headers
+
             for (int i = 0; i < tblTK.getColumnCount(); i++) {
                 pdfTable.addCell(new PdfPCell(new Phrase(tblTK.getColumnName(i), font_small)));
             }
-            //extracting data from the JTable and inserting it to PdfPTable
+
             for (int rows = 0; rows < tblTK.getRowCount(); rows++) {
                 for (int cols = 0; cols < tblTK.getColumnCount(); cols++) {
                     pdfTable.addCell(new PdfPCell(new Phrase(tblTK.getModel().getValueAt(rows, cols).toString(), font_small)));
@@ -659,7 +642,7 @@ public class ThongKeGUI extends JPanel {
 				return;
 			}
 		} catch (DocumentException | IOException e1) {
-			// TODO Auto-generated catch block
+
 			e1.printStackTrace();
 		}
 

@@ -81,8 +81,6 @@ public class ChamCongDAO {
 		MySqlDataAccessHelper conn = new MySqlDataAccessHelper();
 
 		String sql = "INSERT INTO chamcong(manv, thang) VALUES(?, ?) ON DUPLICATE KEY UPDATE machamcong = machamcong";
-
-		// prepare
 		conn.prepare(sql);
 
 		conn.bind(1, chamcong.getMaNV());
@@ -98,7 +96,6 @@ public class ChamCongDAO {
 
 		String sql = "UPDATE chamcong SET manv = ?, thang = ?, songaylam = ?, songaynghi = ?, songaychunhat = ? WHERE machamcong = ?";
 
-		// prepare
 		conn.prepare(sql);
 
 		conn.bind(1, chamcong.getMaNV());

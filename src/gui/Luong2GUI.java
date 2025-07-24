@@ -32,24 +32,23 @@ public class Luong2GUI extends JPanel {
 	JTable tbLuong;
 
 	JPanel pnlForm, pnlButton;
-	// label
-	JLabel lblMaluong, lblHSluong, lblLuongcb, lblHSpc;
-	// textfield
-	JTextField txtMaluong, txtHSluong, txtLuongcb, txtHSpc;
-	// button
-	JButton btThem, btSua, btXoa;
-	// tabel header title
-	final String MA_LUONG = "Mã Lương";
-	// final String HESO_LUONG = "Hệ Số Lương";
-	final String LUONG_COBAN = "Lương Cơ Bản";
-	// final String HESO_PHUCAP = "Hệ Số Phụ Cấp";
 
-	// ham khoi tao
+	JLabel lblMaluong, lblHSluong, lblLuongcb, lblHSpc;
+
+	JTextField txtMaluong, txtHSluong, txtLuongcb, txtHSpc;
+
+	JButton btThem, btSua, btXoa;
+
+	final String MA_LUONG = "Mã Lương";
+
+	final String LUONG_COBAN = "Lương Cơ Bản";
+
+
 	public Luong2GUI() {
 		initCompenents();
 	}
 
-	// tao cac compenents
+
 	public void initCompenents() {
 		this.setLayout(null);
 		this.setBackground(Color.red);
@@ -67,7 +66,7 @@ public class Luong2GUI extends JPanel {
 		btXoaClicked();
 	}
 
-	// tao panel chua form
+
 	public void initPnlForm() {
 		pnlForm = new JPanel();
 		pnlForm.setBounds(0, 0, ContentPanel.WIDTH, ContentPanel.HEIGHT * 60 / 100);
@@ -75,11 +74,10 @@ public class Luong2GUI extends JPanel {
 		this.add(pnlForm);
 	}
 
-	// tao form
 	public void initForm() {
 		GridBagConstraints cons = new GridBagConstraints();
 
-		// maluong
+
 		lblMaluong = new JLabel(MA_LUONG);
 		lblMaluong.setFont(myprops.DEFAULT_FONT_SMALL);
 		cons = myprops.MyGridBagConstraints(3, 1, 1, 1, true, true);
@@ -90,17 +88,7 @@ public class Luong2GUI extends JPanel {
 		cons = myprops.MyGridBagConstraints(4, 1, 1, 1, true, true);
 		pnlForm.add(txtMaluong, cons);
 
-//        //he so luong
-//        lblHSluong = new JLabel(HESO_LUONG);
-//        lblHSluong.setFont(myprops.DEFAULT_FONT_SMALL);
-//        cons = myprops.MyGridBagConstraints(4, 2, 1, 1, true, true);
-//        pnlForm.add(lblHSluong, cons);
-//        
-//        txtHSluong = myprops.RoundedTextField(3);
-//        txtHSluong.setEditable(false);
-//        cons = myprops.MyGridBagConstraints(5, 2, 2, 1, true, true);
-//        pnlForm.add(txtHSluong, cons);
-		// luong co ban
+
 		lblLuongcb = new JLabel(LUONG_COBAN);
 		lblLuongcb.setFont(myprops.DEFAULT_FONT_SMALL);
 		cons = myprops.MyGridBagConstraints(4, 2, 1, 1, true, true);
@@ -111,39 +99,27 @@ public class Luong2GUI extends JPanel {
 		cons = myprops.MyGridBagConstraints(5, 2, 2, 1, true, true);
 		pnlForm.add(txtLuongcb, cons);
 
-//        //he so phu cap
-//        lblHSpc = new JLabel(HESO_PHUCAP);
-//        lblHSpc.setFont(myprops.DEFAULT_FONT_SMALL);
-//        cons = myprops.MyGridBagConstraints(6, 4, 1, 1, true, true);
-//        pnlForm.add(lblHSpc, cons);
-//        
-//        txtHSpc = myprops.RoundedTextField(7);
-//        txtHSpc.setEditable(false);
-//        cons = myprops.MyGridBagConstraints(7, 4, 2, 1, true, true);
-//        pnlForm.add(txtHSpc, cons);
+
 	}
 
-	// tao table luong
 	public void initTbluong() {
 		tbLuong = new JTable();
-		// doc du lieu
-		setModelTable();
 
-		// k cho di chuyen vi tri column
+		setModelTable();
 		tbLuong.getTableHeader().setReorderingAllowed(false);
 
-		// k cho resize column
+
 		tbLuong.getTableHeader().setResizingAllowed(false);
 
-		// sap xep khi click header
+
 		tbLuong.setAutoCreateRowSorter(true);
 
-		// thanh cuon
+
 		JScrollPane scroll = new JScrollPane(tbLuong);
 		pnlTabel.add(scroll);
 	}
 
-	// tao panel chua table
+
 	public void initPnlTabel() {
 		pnlTabel = new JPanel();
 		pnlTabel.setBounds(0, pnlForm.getHeight(), ContentPanel.WIDTH, ContentPanel.HEIGHT - pnlForm.getHeight());
@@ -153,9 +129,9 @@ public class Luong2GUI extends JPanel {
 	public void setModelTable() {
 		Vector<String> header = new Vector<String>();
 		header.add(MA_LUONG);
-		// header.add(HESO_LUONG);
+
 		header.add(LUONG_COBAN);
-		// header.add(HESO_PHUCAP);
+
 
 		DefaultTableModel dtm = new DefaultTableModel(header, 0) {
 			@Override
@@ -176,8 +152,8 @@ public class Luong2GUI extends JPanel {
 		for (int i = 0; i < lst.size(); i++) {
 			l = lst.get(i);
 			Object[] row = { l.getMaLuong(),
-					// l.getHeSoLuong(),
-					l.getLuongCB(), // l.getHeSoPhuCap()
+
+					l.getLuongCB(), 
 			};
 			dtm.addRow(row);
 		}
@@ -203,9 +179,9 @@ public class Luong2GUI extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				LuongDTO luongdto = new LuongDTO();
 
-				// luongdto.setHeSoLuong(Float.valueOf(txtHSluong.getText()));
+
 				luongdto.setLuongCB(Integer.valueOf(txtLuongcb.getText()));
-				// luongdto.setHeSoPhuCap(Float.valueOf(txtHSpc.getText()));
+
 
 				luongBUS.LuongAdd(luongdto);
 
@@ -223,9 +199,9 @@ public class Luong2GUI extends JPanel {
 				LuongDTO luongdto = new LuongDTO();
 
 				luongdto.setMaLuong(Integer.valueOf(txtMaluong.getText()));
-				// luongdto.setHeSoLuong(Float.valueOf(txtHSluong.getText()));
+
 				luongdto.setLuongCB(Integer.valueOf(txtLuongcb.getText()));
-				// luongdto.setHeSoPhuCap(Float.valueOf(txtHSpc.getText()));
+
 
 				luongBUS.LuongEdit(luongdto);
 
@@ -254,7 +230,7 @@ public class Luong2GUI extends JPanel {
 		GridBagConstraints cons = new GridBagConstraints();
 		pnlButton = new JPanel();
 
-		// them
+
 		btThem = new JButton();
 		myprops.BtnFlat(btThem);
 		btThem.setBackground(Color.decode("#43ecdb"));
@@ -263,7 +239,7 @@ public class Luong2GUI extends JPanel {
 		btThem.setText("Thêm");
 		btThem.setSize(20, 10);
 
-		// xoa
+
 		btXoa = new JButton();
 		myprops.BtnFlat(btXoa);
 		btXoa.setBackground(Color.decode("#43d1ec"));
@@ -271,10 +247,9 @@ public class Luong2GUI extends JPanel {
 		btXoa.setFont(new Font("Verdana", Font.PLAIN, 12));
 		btXoa.setText("Xóa");
 
-		// sua
 		btSua = new JButton();
 		myprops.BtnFlat(btSua);
-		// btSua.setBackground(Color.decode("5fc5e1"));
+
 		btSua.setForeground(Color.red);
 		btSua.setFont(new Font("Verdana", Font.PLAIN, 12));
 		btSua.setText("Sửa");

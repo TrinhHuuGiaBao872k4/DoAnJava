@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package bus;
 
 import java.util.ArrayList;
@@ -37,11 +33,8 @@ public class TaiKhoanBUS {
 
 	public boolean Login(String userName, String password) {
 		TaiKhoanDTO taiKhoan = tkDAO.TaiKhoanGet(userName);
+
 		
-//		String pwString = BCrypt.hashpw("123", BCrypt.gensalt(12));
-//		System.out.println(pwString);
-		
-		// nếu sai tên đăng nhập
 		if (taiKhoan != null) {
 	        String hashedPassword = taiKhoan.getMatKhau();
 	        boolean matched = BCrypt.checkpw(password, hashedPassword);

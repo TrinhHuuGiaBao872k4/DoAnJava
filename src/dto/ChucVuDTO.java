@@ -10,7 +10,7 @@ public class ChucVuDTO {
 	private double PhuCap;
 	private String GhiChu;
 
-	// get
+
 	public int getMaCV() {
 		return MaCV;
 	}
@@ -27,7 +27,7 @@ public class ChucVuDTO {
 		return GhiChu;
 	}
 
-	// set
+
 	public void setMaCV(int macv) {
 		MaCV = macv;
 	}

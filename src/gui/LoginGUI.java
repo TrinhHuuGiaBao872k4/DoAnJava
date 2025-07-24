@@ -14,8 +14,7 @@ public class LoginGUI extends javax.swing.JFrame {
 		this.setLocationRelativeTo(null);
 	}
 
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// Code">//GEN-BEGIN:initComponents
+
 	private void initComponents() {
 
 		jPanel1 = new javax.swing.JPanel();
@@ -41,7 +40,7 @@ public class LoginGUI extends javax.swing.JFrame {
 		pnl_Title.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 		pnl_Title.setForeground(new java.awt.Color(51, 0, 255));
 
-		lbl_Mini.setFont(new java.awt.Font("Tahoma", 1, 28)); // NOI18N
+		lbl_Mini.setFont(new java.awt.Font("Tahoma", 1, 28)); 
 		lbl_Mini.setForeground(new java.awt.Color(255, 255, 255));
 		lbl_Mini.setText("-");
 		lbl_Mini.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -50,11 +49,11 @@ public class LoginGUI extends javax.swing.JFrame {
 			}
 		});
 
-		lbl_Title.setFont(new java.awt.Font("Tahoma", 1, 27)); // NOI18N
+		lbl_Title.setFont(new java.awt.Font("Tahoma", 1, 27)); 
 		lbl_Title.setForeground(new java.awt.Color(255, 255, 255));
 		lbl_Title.setText("LOGIN HR MANAGER ");
 
-		lbl_Exit.setFont(new java.awt.Font("Tahoma", 1, 28)); // NOI18N
+		lbl_Exit.setFont(new java.awt.Font("Tahoma", 1, 28)); 
 		lbl_Exit.setForeground(new java.awt.Color(255, 255, 255));
 		lbl_Exit.setText("X");
 		lbl_Exit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -103,9 +102,9 @@ public class LoginGUI extends javax.swing.JFrame {
 
 		pnl_Login.setBackground(new java.awt.Color(163, 217, 217));
 
-		txtUser.setFont(new java.awt.Font("Times New Roman", 0, 22)); // NOI18N
+		txtUser.setFont(new java.awt.Font("Times New Roman", 0, 22)); 
 
-		txtPass.setFont(new java.awt.Font("Times New Roman", 0, 22)); // NOI18N
+		txtPass.setFont(new java.awt.Font("Times New Roman", 0, 22)); 
 		txtPass.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				txtPassActionPerformed(evt);
@@ -113,7 +112,7 @@ public class LoginGUI extends javax.swing.JFrame {
 		});
 
 		btnLogin.setBackground(new java.awt.Color(204, 255, 255));
-		btnLogin.setFont(new java.awt.Font("Sitka Heading", 1, 25)); // NOI18N
+		btnLogin.setFont(new java.awt.Font("Sitka Heading", 1, 25)); 
 		btnLogin.setText("LOGIN");
 		btnLogin.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,12 +120,12 @@ public class LoginGUI extends javax.swing.JFrame {
 			}
 		});
 
-		lbl_User.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
-		lbl_User.setIcon(new javax.swing.ImageIcon("src\\img\\user.png")); // NOI18N
+		lbl_User.setFont(new java.awt.Font("Tahoma", 0, 22)); 
+		lbl_User.setIcon(new javax.swing.ImageIcon("src\\img\\user.png"));
 		lbl_User.setText("Username");
 
 		btnReset.setBackground(new java.awt.Color(204, 255, 255));
-		btnReset.setFont(new java.awt.Font("Sitka Heading", 1, 25)); // NOI18N
+		btnReset.setFont(new java.awt.Font("Sitka Heading", 1, 25)); 
 		btnReset.setText("RESET");
 		btnReset.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,11 +133,11 @@ public class LoginGUI extends javax.swing.JFrame {
 			}
 		});
 
-		lbl_Pass.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
-		lbl_Pass.setIcon(new javax.swing.ImageIcon("src\\img\\passwd.png")); // NOI18N
+		lbl_Pass.setFont(new java.awt.Font("Tahoma", 0, 22)); 
+		lbl_Pass.setIcon(new javax.swing.ImageIcon("src\\img\\passwd.png")); 
 		lbl_Pass.setText("Password");
 
-		lbl_icon.setIcon(new javax.swing.ImageIcon("src\\img\\io.jpg")); // NOI18N
+		lbl_icon.setIcon(new javax.swing.ImageIcon("src\\img\\io.jpg")); 
 
 		javax.swing.GroupLayout pnl_LoginLayout = new javax.swing.GroupLayout(pnl_Login);
 		pnl_Login.setLayout(pnl_LoginLayout);
@@ -223,14 +222,14 @@ public class LoginGUI extends javax.swing.JFrame {
 								Short.MAX_VALUE)));
 
 		pack();
-	}// </editor-fold>//GEN-END:initComponents
+	}
 
-	private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtPassActionPerformed
-		// TODO add your handling code here:
-	}// GEN-LAST:event_txtPassActionPerformed
+	private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {
+
+	}
 
 	@SuppressWarnings("deprecation")
-	private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnLoginActionPerformed
+	private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {
 
 		if (txtUser.getText().trim().isEmpty() && txtPass.getText().trim().isEmpty()) {
 			lblUser_emtpy.setText("Username is Empty!");
@@ -246,14 +245,7 @@ public class LoginGUI extends javax.swing.JFrame {
 			lblPass_empty.setForeground(Color.RED);
 		} else {
 			try {
-//				MySqlDataAccessHelper conn = new MySqlDataAccessHelper();
-//				String sql = "select * from taikhoan where tendangnhap = ? and matkhau = ?";
-//				conn.prepare(sql);
-//
-//				conn.bind(1, txtUser.getText());
-//				conn.bind(2, txtPass.getText().trim());
-//
-//				ResultSet rs = conn.executeQueryPre();
+
 				
 				TaiKhoanBUS tkBUS = new TaiKhoanBUS();
 				boolean hopLe = tkBUS.Login(txtUser.getText().trim(), txtPass.getText().trim());
@@ -272,45 +264,36 @@ public class LoginGUI extends javax.swing.JFrame {
 				JOptionPane.showMessageDialog(null, e);
 			}
 		}
-	}// GEN-LAST:event_btnLoginActionPerformed
+	}
 
-	private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnResetActionPerformed
+	private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {
 
 		txtUser.setText("");
 		txtPass.setText("");
 		lblUser_emtpy.setText("");
 		lblPass_empty.setText("");
-	}// GEN-LAST:event_btnResetActionPerformed
+	}
 
-	private void lbl_ExitMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_lbl_ExitMouseClicked
-		int dialogResult = JOptionPane.showConfirmDialog(null, // component
-				"Do you want to exit?", // message
-				"Confirm Exit", // title
-				JOptionPane.YES_NO_OPTION, // option type
-				JOptionPane.WARNING_MESSAGE // message types
+	private void lbl_ExitMouseClicked(java.awt.event.MouseEvent evt) {
+		int dialogResult = JOptionPane.showConfirmDialog(null, 
+				"Do you want to exit?",
+				"Confirm Exit",
+				JOptionPane.YES_NO_OPTION, 
+				JOptionPane.WARNING_MESSAGE 
 		);
 
 		if (dialogResult == JOptionPane.YES_OPTION) {
 			System.exit(0);
 		}
-	}// GEN-LAST:event_lbl_ExitMouseClicked
+	}
 
-	private void lbl_MiniMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_lbl_MiniMouseClicked
+	private void lbl_MiniMouseClicked(java.awt.event.MouseEvent evt) {
 
 		this.setState(JFrame.ICONIFIED);
-	}// GEN-LAST:event_lbl_MiniMouseClicked
+	}
 
-//	public static void main(String args[]) {
-//
-//		java.awt.EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				new LoginGUI().setVisible(true);
-//
-//			}
-//		});
-//	}
 
-	// Variables declaration - do not modify//GEN-BEGIN:variables
+	
 	private javax.swing.JButton btnLogin;
 	private javax.swing.JButton btnReset;
 	private javax.swing.JPanel jPanel1;
@@ -326,5 +309,5 @@ public class LoginGUI extends javax.swing.JFrame {
 	private javax.swing.JPanel pnl_Title;
 	private javax.swing.JPasswordField txtPass;
 	private javax.swing.JTextField txtUser;
-	// End of variables declaration//GEN-END:variables
+
 }

@@ -37,11 +37,11 @@ public class MainFrame extends JFrame {
 		initContent();
 		nav.addSwitchPanel(content);
 		
-//		this.pack();
+
 	}
 
 	public void centeredFrame() {
-		// centered frame
+
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = kit.getScreenSize();
 		int screenWidth = screenSize.width;
